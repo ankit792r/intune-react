@@ -1,12 +1,12 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import axios from 'axios';
+import axiosInstance from '../../utility/Axios';
 
-const signin = createAsyncThunk("auth/signin", async (data) => {
-    return await axios.post("http://localhost:5000/api/auth/signin", data);
+const signin = createAsyncThunk("auth/signin", async (data, state) => {
+    return await axiosInstance.post("api/auth/signin", data);
 });
 
 const signup = createAsyncThunk("auth/signup", async (data) => {
-    return await axios.post("http://localhost:5000/api/user/new", data)
+    return await axiosInstance.post("api/user/new", data)
 });
 
 
