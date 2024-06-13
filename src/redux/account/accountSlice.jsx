@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { getAccountInfo } from "./accountReducer"
+import { getAccountInfo, updateAccountInfo } from "./accountReducer"
 
 
 const initialState = {
@@ -26,6 +26,22 @@ const accountSlice = createSlice({
             .addCase(getAccountInfo.fulfilled, (state, action) => {
                 state.state = 'idle'
                 state.info = action.payload.data
+            })
+
+
+            .addCase(updateAccountInfo.pending, (state) => {
+                state.state = 'loading'
+            })
+
+            .addCase(updateAccountInfo.rejected, (state, action) => {
+                state.state = 'idle'
+                state.error = action.error.message
+            })
+
+            .addCase(updateAccountInfo.fulfilled, (state, action) => {
+                state.state = 'idle'
+                state.info.name = action.payload.data.name
+                state.info.username = action.payload.data.username
             })
 
     }
