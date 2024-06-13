@@ -3,7 +3,7 @@ import { Link, Outlet, useNavigate } from 'react-router-dom'
 import { logout } from '../../redux/auth/authSlice'
 import { useDispatch } from 'react-redux'
 
-const ProfilePage = () => {
+const AccountPage = () => {
     const dispath = useDispatch()
     const navigate = useNavigate()
 
@@ -14,10 +14,10 @@ const ProfilePage = () => {
     return (
         <div>
             <Link to="/home">Home</Link> <button onClick={logoutHandler}>logout</button>
-            <h1>profile</h1>
+            <h1>Account</h1>
             <Outlet />
         </div>
     )
 }
 
-export default ProfilePage
+export default AccountPage

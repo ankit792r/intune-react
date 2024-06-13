@@ -1,10 +1,11 @@
 import AuthMiddleware from "../../components/AuthMiddleware"
-import ProfilePage from "./ProfilePage"
+import AccountPage from "./AccountPage"
+
 
 const profileRoute = {
-    path: "/profile",
+    path: "/account",
     element: (<AuthMiddleware>
-        <ProfilePage />
+        <AccountPage />
     </AuthMiddleware>)
 }
 

@@ -6,7 +6,7 @@ const HomePage = () => {
         <div>
             <div>
                 <div>
-                    <Link to="/profile">Username or Name</Link> <Link to="/settings">settings</Link>
+                    <Link to="/account">Username or Name</Link> <Link to="/settings">settings</Link>
                 </div>
                 <div>
                     <ul>
