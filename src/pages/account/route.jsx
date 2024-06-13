@@ -1,7 +1,6 @@
 import AuthMiddleware from "../../components/AuthMiddleware"
 import AccountEdit from "./AccountEdit"
 import AccountPage from "./AccountPage"
-import FriendsList from "./FriendsList"
 
 
 const accountRoute = {
@@ -14,10 +13,6 @@ const accountRoute = {
             path: "",
             element: <AccountEdit />
         },
-        {
-            path: "friends",
-            element: <FriendsList />
-        }
     ]
 }
 

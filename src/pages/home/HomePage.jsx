@@ -8,7 +8,7 @@ const HomePage = () => {
         <div>
             <div>
                 <div>
-                    <Link to="/account">{username ? username : "account"}</Link> <Link to="/settings">settings</Link>
+                    <Link to="/account">{username ? username : "account"}</Link> <Link to="/friends">friends</Link> <Link to="/settings">settings</Link>
                 </div>
                 <div>
                     <ul>

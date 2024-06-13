@@ -19,8 +19,6 @@ const AccountPage = () => {
             <h3>{info.name} - {info.username}</h3>
             <ul>
                 <li><Link to="/account">account</Link></li>
-                <li><Link to="/account/friends">friends</Link></li>
-                <br />
                 <button onClick={() => { dispatch(logout()) }}>logout</button>
             </ul>
             <br />
