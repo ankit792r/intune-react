@@ -6,6 +6,8 @@ const initialState = {
     userId: null,
     error: null,
     status: 'idle',
+    // temp storing token
+    token:null
 }
 
 const authSlice = createSlice({
@@ -27,12 +29,14 @@ const authSlice = createSlice({
             .addCase(signin.rejected, (state, action) => {
                 state.status = 'idle'
                 state.error = action.error.message
+                console.log(action.error);
             })
 
             .addCase(signin.fulfilled, (state, action) => {
                 state.status = 'idle'
                 state.userId = action.payload.data._id
                 state.authenticated = true
+                state.token = action.payload.data.token
             })
 
             .addCase(signup.pending, (state) => {
@@ -48,6 +52,7 @@ const authSlice = createSlice({
                 state.status = 'idle'
                 state.userId = action.payload.data._id
                 state.authenticated = true
+                state.token = action.payload.data.token
             })
 
     }
