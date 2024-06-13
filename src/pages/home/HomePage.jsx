@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { Link, Outlet } from 'react-router-dom'
+import { socket } from '../../services/socketService'
 
 const HomePage = () => {
+    useEffect(() => { socket.connect() }, [])
+
     const username = useSelector(state => state.account.info?.username)
+
     return (
         <div>
             <div>
