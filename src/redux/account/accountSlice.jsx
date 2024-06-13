@@ -3,11 +3,7 @@ import { getAccountInfo } from "./accountReducer"
 
 
 const initialState = {
-    info: {
-        name: null,
-        username: null,
-        email: null,
-    },
+    info: {},
     error: null,
     state: 'idle'
 }

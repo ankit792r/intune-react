@@ -1,12 +1,14 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { Link, Outlet } from 'react-router-dom'
 
 const HomePage = () => {
+    const username = useSelector(state => state.account.info?.username)
     return (
         <div>
             <div>
                 <div>
-                    <Link to="/account">Username or Name</Link> <Link to="/settings">settings</Link>
+                    <Link to="/account">{username ? username : "account"}</Link> <Link to="/settings">settings</Link>
                 </div>
                 <div>
                     <ul>
