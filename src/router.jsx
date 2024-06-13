@@ -4,14 +4,14 @@ import catchAllRoute from "./pages/catchall/route";
 import landingRoute from "./pages/landing/route";
 import homeRoute from "./pages/home/route";
 import settingRoute from "./pages/setting/route";
-import profileRoute from "./pages/profile/route";
+import accountRoute from "./pages/account/route";
 
 const router = createBrowserRouter([
     landingRoute,
     homeRoute,
     settingRoute,
     authRoute,
-    profileRoute,
+    accountRoute,
     catchAllRoute
 ])
 
