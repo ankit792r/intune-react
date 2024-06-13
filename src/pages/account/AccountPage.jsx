@@ -5,20 +5,29 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getAccountInfo } from '../../redux/account/accountReducer'
 
 const AccountPage = () => {
-    const dispath = useDispatch()
-
+    const dispatch = useDispatch()
     const info = useSelector(state => state.account.info)
+    const status = useSelector(state => state.account.status)
 
     useEffect(() => {
-        dispath(getAccountInfo())
+        dispatch(getAccountInfo())
     }, [])
-
 
     return (
         <div>
-            <Link to="/home">Home</Link> <button onClick={()=>{dispath(logout())}}>logout</button>
-            <h1>{info.name}</h1>
-            <Outlet />
+            <Link to="/home">Home</Link>
+            <h3>{info.name} - {info.username}</h3>
+            <ul>
+                <li><Link to="/account">account</Link></li>
+                <li><Link to="/account/friends">friends</Link></li>
+                <br />
+                <button onClick={() => { dispatch(logout()) }}>logout</button>
+            </ul>
+            <br />
+            {
+                status == 'loading' ? <p>loading</p> : <Outlet />
+            }
+
         </div>
     )
 }
