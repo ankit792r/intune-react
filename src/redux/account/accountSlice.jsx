@@ -4,6 +4,7 @@ import { getAccountInfo, updateAccountInfo } from "./accountReducer"
 
 const initialState = {
     info: {},
+    friendList: {},
     error: null,
     state: 'idle'
 }
