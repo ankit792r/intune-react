@@ -43,6 +43,20 @@ const friendsSlice = createSlice({
             const rreq = action.payload;
             state.friends.outgoing = state.friends.outgoing.filter(req => rreq._id !== req._id)
         },
+
+        requestAccept: (state, action)=> {
+            const areq = action.payload;
+            state.friends.incoming = state.friends.incoming.filter(req => areq._id !== req._id)
+
+            state.friends.friends.push(areq)
+        },
+
+        requestAccepted: (state, action)=> {
+            const areq = action.payload;
+            state.friends.outgoing = state.friends.outgoing.filter(req => areq._id !== req._id)
+
+            state.friends.friends.push(areq)
+        }
     },
     extraReducers: builder => {
         builder
@@ -63,5 +77,5 @@ const friendsSlice = createSlice({
 })
 
 export const { incomingRequest, canceledIncomingRequest, requestSent, 
-    cancelSentRequest, rejectRequest, requestRejected } = friendsSlice.actions
+    cancelSentRequest, rejectRequest, requestRejected, requestAccept, requestAccepted } = friendsSlice.actions
 export default friendsSlice.reducer;
