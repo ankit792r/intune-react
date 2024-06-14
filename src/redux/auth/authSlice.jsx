@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { signin, signup } from './authReducer'
+import socket from "../../services/socketService";
 
 const initialState = {
     authenticated: false,
@@ -18,6 +19,7 @@ const authSlice = createSlice({
             state.authenticated = false
             state.error = null
             state.userId = null
+            socket.disconnect()
         }
     },
     extraReducers: builder => {
