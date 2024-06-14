@@ -30,7 +30,7 @@ const FriendsPage = () => {
     }
 
     const handleRequestCancel = (requ) => {
-        socket.emit("cancel-request", { to: requ.userId, from: myId }, (val) => { dispatch(cancelSentRequest(requ)) })
+        socket.emit("cancel-request", { to: requ._id, from: myId }, (val) => { dispatch(cancelSentRequest(requ)) })
     }
 
     const handleRequestReject = (requ) => {
