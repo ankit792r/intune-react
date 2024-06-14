@@ -1,12 +1,23 @@
 import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { Link, Outlet } from 'react-router-dom'
-import { socket } from '../../services/socketService'
+import socket from '../../services/socketService'
+import { addCallbacks, removeCallbacks } from '../../services/socketCallbacks'
 
 const HomePage = () => {
-    useEffect(() => { socket.connect() }, [])
-
     const username = useSelector(state => state.account.info?.username)
+    const token = useSelector(state => state.auth.token)
+    
+    useEffect(() => {
+        socket.auth = { token }
+        socket.connect()
+
+        addCallbacks()
+
+        return () => {
+            removeCallbacks()
+        }
+    }, [])
 
     return (
         <div>
