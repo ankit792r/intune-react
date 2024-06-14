@@ -11,12 +11,6 @@ const HomePage = () => {
     useEffect(() => {
         socket.auth = { token }
         socket.connect()
-
-        addCallbacks()
-
-        return () => {
-            removeCallbacks()
-        }
     }, [])
 
     return (
