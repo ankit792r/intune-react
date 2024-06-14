@@ -5,8 +5,8 @@ import { getFriends } from "./friendsReducer"
 const initialState = {
     friends: {
         friends: [],
-        incomming: [],
-        outgoind: []
+        incoming: [],
+        outgoing: []
     },
     error:null,
     status: 'idle'
@@ -18,6 +18,20 @@ const friendsSlice = createSlice({
     reducers: {
         incomingRequest: (state, action) => {
             state.friends.incoming.push(action.payload)
+        },
+
+        canceledIncomingRequest: (state, action) => {
+            const creq = action.payload;
+            state.friends.incoming = state.friends.incoming.filter(req => creq._id !== req._id )
+        },
+
+        requestSent: (state, action) => {
+            state.friends.outgoing.push(action.payload)
+        },
+
+        cancelSentRequest: (state, action) => {
+            const creq = action.payload;
+            state.friends.outgoing = state.friends.outgoing.filter(req => creq._id !== req._id )
         }
     },
     extraReducers: builder => {
@@ -38,5 +52,5 @@ const friendsSlice = createSlice({
     }
 })
 
-export const { incomingRequest } = friendsSlice.actions
+export const { incomingRequest, canceledIncomingRequest, requestSent, cancelSentRequest } = friendsSlice.actions
 export default friendsSlice.reducer;
