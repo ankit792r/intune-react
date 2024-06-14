@@ -8,7 +8,7 @@ const initialState = {
         incoming: [],
         outgoing: []
     },
-    error:null,
+    error: null,
     status: 'idle'
 }
 
@@ -22,7 +22,7 @@ const friendsSlice = createSlice({
 
         canceledIncomingRequest: (state, action) => {
             const creq = action.payload;
-            state.friends.incoming = state.friends.incoming.filter(req => creq._id !== req._id )
+            state.friends.incoming = state.friends.incoming.filter(req => creq._id !== req._id)
         },
 
         requestSent: (state, action) => {
@@ -31,8 +31,18 @@ const friendsSlice = createSlice({
 
         cancelSentRequest: (state, action) => {
             const creq = action.payload;
-            state.friends.outgoing = state.friends.outgoing.filter(req => creq._id !== req._id )
-        }
+            state.friends.outgoing = state.friends.outgoing.filter(req => creq._id !== req._id)
+        },
+
+        rejectRequest: (state, action) => {
+            const rreq = action.payload;
+            state.friends.incoming = state.friends.incoming.filter(req => rreq._id !== req._id)
+        },
+
+        requestRejected: (state, action) => {
+            const rreq = action.payload;
+            state.friends.outgoing = state.friends.outgoing.filter(req => rreq._id !== req._id)
+        },
     },
     extraReducers: builder => {
         builder
@@ -42,15 +52,16 @@ const friendsSlice = createSlice({
 
             .addCase(getFriends.rejected, (state, action) => {
                 state.status = 'idle',
-                state.error = action.error.message
+                    state.error = action.error.message
             })
 
-            .addCase(getFriends.fulfilled, (state, action)=>{
+            .addCase(getFriends.fulfilled, (state, action) => {
                 state.status = 'idle',
-                state.friends = action.payload.data.friends
+                    state.friends = action.payload.data.friends
             })
     }
 })
 
-export const { incomingRequest, canceledIncomingRequest, requestSent, cancelSentRequest } = friendsSlice.actions
+export const { incomingRequest, canceledIncomingRequest, requestSent, 
+    cancelSentRequest, rejectRequest, requestRejected } = friendsSlice.actions
 export default friendsSlice.reducer;

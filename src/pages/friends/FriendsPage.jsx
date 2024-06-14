@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import socket from '../../services/socketService'
 import { getFriends } from '../../redux/friends/friendsReducer'
-import { cancelSentRequest, requestSent } from '../../redux/friends/friendsSlice'
+import { cancelSentRequest, rejectRequest, requestSent } from '../../redux/friends/friendsSlice'
 
 
 
@@ -34,7 +34,7 @@ const FriendsPage = () => {
     }
 
     const handleRequestReject = (requ) => {
-
+        socket.emit("reject-request", { from: requ._id, to: myId }, (val) => { dispatch(rejectRequest(requ)) })
     }
 
     const handleRequestAccept = (requ) => {
