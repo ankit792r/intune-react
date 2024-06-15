@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { Link, Outlet } from 'react-router-dom'
 import socket from '../../services/socketService'
-import { addCallbacks, removeCallbacks } from '../../services/socketCallbacks'
 
 const HomePage = () => {
     const username = useSelector(state => state.account.info?.username)

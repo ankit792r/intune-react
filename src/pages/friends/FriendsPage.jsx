@@ -38,7 +38,9 @@ const FriendsPage = () => {
     }
 
     const handleRequestAccept = (requ) => {
-        socket.emit("accept-request", { from: requ._id, to: myId }, (val) => { dispatch(requestAccept(requ)) })
+        socket.emit("accept-request", { from: requ._id, to: myId }, (val) => {
+            dispatch(requestAccept({ ...requ, chat: val.chat }))
+        })
     }
 
     return (
@@ -55,7 +57,7 @@ const FriendsPage = () => {
                 <h5>frinds</h5>
                 {
                     friends?.friends?.map(ele => {
-                        return <p>{ele.name}</p>
+                        return <p>{ele.name} <button>chat</button></p>
                     })
                 }
             </div>
