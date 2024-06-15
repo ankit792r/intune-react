@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
-import { signin } from '../../redux/auth/authReducer'
+import { userSignin } from '../../redux/user/userReducers'
 
 const Signin = () => {
 	const dispatch = useDispatch()
@@ -9,7 +9,7 @@ const Signin = () => {
 
 	const status = useSelector(state => state.auth.status);
 	const error = useSelector(state => state.auth.error);
-	const authenticated = useSelector(state => state.auth.authenticated);
+	const authenticated = useSelector(state => state.user.authenticated);
 
 	const [email, setemail] = useState("")
 	const [password, setpassword] = useState("")
@@ -22,7 +22,8 @@ const Signin = () => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault()
-		dispatch(signin({ email, password }))
+		console.log("coll");
+		dispatch(userSignin({ email, password }))
 	}
 
 	return (
