@@ -4,6 +4,7 @@ import router from './router.jsx';
 import socket from './services/socketService.js';
 import { useDispatch } from 'react-redux';
 import { canceledIncomingRequest, incomingRequest, requestAccepted, requestRejected } from './redux/friends/friendsSlice.jsx';
+import { addChat } from './redux/chat/chatSlice.jsx';
 
 
 const App = () => {
@@ -23,7 +24,8 @@ const App = () => {
     }
 
     const onRequestAccpted = (data) => {
-        dispatch(requestAccepted(data))
+        dispatch(requestAccepted({ name: data.name, username: data.usrname, _id: data._id }))
+        dispatch(addChat(data.chat))
     }
 
     useEffect(() => {

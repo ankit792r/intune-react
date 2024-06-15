@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import socket from '../../services/socketService'
 import { getFriends } from '../../redux/friends/friendsReducer'
 import { cancelSentRequest, rejectRequest, requestAccept, requestSent } from '../../redux/friends/friendsSlice'
+import { addChat } from '../../redux/chat/chatSlice'
 
 
 
@@ -39,7 +40,8 @@ const FriendsPage = () => {
 
     const handleRequestAccept = (requ) => {
         socket.emit("accept-request", { from: requ._id, to: myId }, (val) => {
-            dispatch(requestAccept({ ...requ, chat: val.chat }))
+            dispatch(requestAccept(requ))
+            dispatch(addChat(val.chat))
         })
     }
 

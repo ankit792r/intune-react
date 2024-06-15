@@ -6,8 +6,7 @@ const initialState = {
     friends: {
         friends: [],
         incoming: [],
-        outgoing: [],
-        chats: []
+        outgoing: []
     },
     error: null,
     status: 'idle'
@@ -50,7 +49,6 @@ const friendsSlice = createSlice({
             state.friends.incoming = state.friends.incoming.filter(req => areq._id !== req._id)
 
             state.friends.friends.push(areq)
-            state.friends.chats.push(areq.chat)
         },
 
         requestAccepted: (state, action) => {
@@ -58,7 +56,6 @@ const friendsSlice = createSlice({
             state.friends.outgoing = state.friends.outgoing.filter(req => areq._id !== req._id)
 
             state.friends.friends.push(areq);
-            state.friends.chats.push(areq.chat)
         }
     },
     extraReducers: builder => {

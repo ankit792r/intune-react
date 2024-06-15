@@ -6,6 +6,7 @@ import socket from '../../services/socketService'
 const HomePage = () => {
     const username = useSelector(state => state.account.info?.username)
     const token = useSelector(state => state.auth.token)
+    const chats  = useSelector(state=> state.chat.chats)
     
     useEffect(() => {
         socket.auth = { token }
@@ -20,9 +21,11 @@ const HomePage = () => {
                 </div>
                 <div>
                     <ul>
-                        <li><Link to="/home/chat1">chat 1</Link></li>
-                        <li><Link to="">chat 2</Link></li>
-                        <li><Link to="">chat 3</Link></li>
+                        {
+                            chats.map(chat=>{
+                                return <li><Link to={`/home/${chat._id}`}>{chat.name}</Link></li>
+                            })
+                        }
                     </ul>
                 </div>
             </div>
