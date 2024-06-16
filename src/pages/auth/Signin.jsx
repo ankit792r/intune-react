@@ -7,22 +7,21 @@ const Signin = () => {
 	const dispatch = useDispatch()
 	const navigate = useNavigate()
 
-	const status = useSelector(state => state.auth.status);
-	const error = useSelector(state => state.auth.error);
+	const status = useSelector(state => state.user.status);
+	const error = useSelector(state => state.user.error);
 	const authenticated = useSelector(state => state.user.authenticated);
 
 	const [email, setemail] = useState("")
 	const [password, setpassword] = useState("")
 
 	useEffect(() => {
-		if (authenticated) {
+		if (status=="idle" && error == null && authenticated) {
 			navigate("/home")
 		}
-	}, [status, authenticated])
+	}, [status, error])
 
 	const handleSubmit = (e) => {
 		e.preventDefault()
-		console.log("coll");
 		dispatch(userSignin({ email, password }))
 	}
 
