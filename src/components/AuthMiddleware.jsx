@@ -4,8 +4,8 @@ import { Navigate, useNavigate } from 'react-router-dom'
 
 const AuthMiddleware = ({ children }) => {
     const navigate = useNavigate()
-    const authenticated = useSelector(state => state.auth.authenticated)
-    const status = useSelector(state => state.auth.status)
+    const authenticated = useSelector(state => state.user.authenticated)
+    const status = useSelector(state => state.user.status)
 
     useEffect(()=>{
         if (!authenticated) {

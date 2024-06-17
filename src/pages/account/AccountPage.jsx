@@ -1,17 +1,12 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Link, Outlet } from 'react-router-dom'
-import { logout } from '../../redux/auth/authSlice'
+import { logout } from '../../redux/user/userSlice'
 import { useDispatch, useSelector } from 'react-redux'
-import { getAccountInfo } from '../../redux/account/accountReducer'
 
 const AccountPage = () => {
     const dispatch = useDispatch()
-    const info = useSelector(state => state.account.info)
-    const status = useSelector(state => state.account.status)
-
-    useEffect(() => {
-        dispatch(getAccountInfo())
-    }, [])
+    const info = useSelector(state => state.user.user)
+    const status = useSelector(state => state.user.status)
 
     return (
         <div>

@@ -4,11 +4,7 @@ const userInitialState = {
     username: null,
     email: null,
     chats: [],
-    friends: {
-        friends: [],
-        incoming: [],
-        outgoing: []
-    }
+    requests: []
 }
 
 export default userInitialState

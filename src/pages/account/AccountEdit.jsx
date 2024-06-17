@@ -1,17 +1,18 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { updateAccountInfo } from '../../redux/account/accountReducer'
+import { updateUser } from '../../redux/user/userReducer'
 
 const AccountEdit = () => {
     const dispatch = useDispatch()
-    const info = useSelector(state => state.account.info)
+    const info = useSelector(state => state.user.user)
 
     const [name, setname] = useState(info.name)
     const [username, setusername] = useState(info.username)
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        dispatch(updateAccountInfo({name, username}))
+        dispatch(updateUser({name, username}))
     }
 
     return (

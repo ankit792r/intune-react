@@ -15,10 +15,10 @@ const Signin = () => {
 	const [password, setpassword] = useState("")
 
 	useEffect(() => {
-		if (status=="idle" && error == null && authenticated) {
+		if (authenticated) {
 			navigate("/home")
 		}
-	}, [status, error])
+	}, [authenticated])
 
 	const handleSubmit = (e) => {
 		e.preventDefault()
@@ -30,8 +30,8 @@ const Signin = () => {
 			<h4>Signin here</h4>
 			<p>{error}</p>
 			<form onSubmit={handleSubmit}>
-				<input type="text" placeholder='email' value={email} onChange={e => setemail(e.target.value)} /> <br />
-				<input type="text" placeholder='password' value={password} onChange={e => setpassword(e.target.value)} /> <br />
+				<input required autoFocus type="text" placeholder='email' value={email} onChange={e => setemail(e.target.value)} /> <br />
+				<input required  type="text" placeholder='password' value={password} onChange={e => setpassword(e.target.value)} /> <br />
 
 				<input type="submit" value='submit' />
 			</form>

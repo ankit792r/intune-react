@@ -3,7 +3,7 @@ import { RouterProvider } from "react-router-dom";
 import router from './router.jsx';
 import socket from './services/socketService.js';
 import { useDispatch } from 'react-redux';
-import { canceledIncomingRequest, incomingRequest, requestAccepted, requestRejected } from './redux/friends/friendsSlice.jsx';
+import { canceledIncomingRequest, incomingRequest, requestAccepted, requestRejected } from './redux/user/userSlice';
 import { addChat } from './redux/chat/chatSlice.jsx';
 
 

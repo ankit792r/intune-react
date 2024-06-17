@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import socket from '../../services/socketService'
-import { getFriends } from '../../redux/friends/friendsReducer'
-import { cancelSentRequest, rejectRequest, requestAccept, requestSent } from '../../redux/friends/friendsSlice'
+import { getFriends } from '../../redux/user/userReducer'
+import { cancelSentRequest, rejectRequest, requestAccept, requestSent } from '../../redux/user/userSlice'
 import { addChat } from '../../redux/chat/chatSlice'
 
 
@@ -13,8 +13,8 @@ const FriendsPage = () => {
     const [refresh, setrefresh] = useState(false)
     const [username, setusername] = useState("")
 
-    const myId = useSelector(state => state.auth.userId)
-    const friends = useSelector(state => state.friends.friends)
+    const myId = useSelector(state => state.user.user._id)
+    const friends = useSelector(state => state.user.user.friends)
 
     useEffect(() => {
         if (refresh) {
