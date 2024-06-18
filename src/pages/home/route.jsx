@@ -1,4 +1,5 @@
 import AuthMiddleware from "../../components/AuthMiddleware"
+import ServerStats from "../../components/ServerStats"
 import HomePage from "./HomePage"
 import ChatSection from "./chat/ChatSection"
 
@@ -10,7 +11,7 @@ const homeRoute = {
     children: [
         {
             path: "",
-            element: (<h1>Server states</h1>),
+            element: <ServerStats/>,
         },
         {
             path: ":chatId",
