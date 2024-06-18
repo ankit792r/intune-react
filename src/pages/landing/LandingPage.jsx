@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 const LandingPage = () => {
-  const authenticated = useSelector(state => state.auth.authenticated);
+  const authenticated = useSelector(state => state.user.authenticated);
 
   return (
     <div>

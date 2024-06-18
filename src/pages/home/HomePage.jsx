@@ -5,6 +5,8 @@ import socket from '../../services/socketService'
 
 const HomePage = () => {
     const user = useSelector(state => state.user.user);
+
+    console.log(user.chats);
     
     useEffect(() => {
         const token = localStorage.getItem("token")

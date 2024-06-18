@@ -14,24 +14,21 @@ const userSlice = createSlice({
     initialState,
     reducers: {
         logout: (state) => {
-            console.log("i was called");
             state.authenticated = false
             state.user = userInitialState
             localStorage.removeItem("token")
         },
 
         incomingRequest: (state, action) => {
-            console.log(state);
             state.user.requests.push(action.payload)
         },
 
         canceledIncomingRequest: (state, action) => {
             const creq = action.payload;
-            state.user.requests = state.user.requests.filter(req => creq._id !== req._id)
+            state.user.requests = state.user.requests.filter(req => creq.requestId !== req._id)
         },
 
         requestSent: (state, action) => {
-            console.log(state);
             state.user.requests.push(action.payload)
         },
 
@@ -47,21 +44,17 @@ const userSlice = createSlice({
 
         requestRejected: (state, action) => {
             const rreq = action.payload;
-            state.user.requests = state.user.requests.filter(req => rreq._id !== req._id)
+            state.user.requests = state.user.requests.filter(req => rreq.requestId !== req._id)
         },
 
         requestAccept: (state, action) => {
-            const areq = action.payload;
-            state.user.friends.incoming = state.user.friends.incoming.filter(req => areq._id !== req._id)
-
-            state.user.friends.friends.push(areq)
+            state.user.chats.push(action.payload.newChat);
+            state.user.requests = state.user.requests.filter(req => action.payload.requestId !== req._id)
         },
 
         requestAccepted: (state, action) => {
-            const areq = action.payload;
-            state.user.friends.outgoing = state.user.friends.outgoing.filter(req => areq._id !== req._id)
-
-            state.user.friends.friends.push(areq);
+            state.user.chats.push(action.payload.newChat);
+            state.user.requests = state.user.requests.filter(req => action.payload.requestId !== req._id)
         }
     },
     extraReducers: builder => {

@@ -14,7 +14,7 @@ const FriendsPage = () => {
     const [username, setusername] = useState("")
 
     const myId = useSelector(state => state.user.user._id)
-    const friends = useSelector(state => state.user.user.friends)
+    const requests = useSelector(state => state.user.user.requests)
 
     useEffect(() => {
         if (refresh) {
@@ -31,51 +31,43 @@ const FriendsPage = () => {
     }
 
     const handleRequestCancel = (requ) => {
-        socket.emit("cancel-request", { to: requ._id, from: myId }, (val) => { dispatch(cancelSentRequest(requ)) })
+        socket.emit("cancel-request", { requestId: requ._id, toUser: requ.to._id }, (val) => { dispatch(cancelSentRequest(requ)) })
     }
 
     const handleRequestReject = (requ) => {
-        socket.emit("reject-request", { from: requ._id, to: myId }, (val) => { dispatch(rejectRequest(requ)) })
+        socket.emit("reject-request", { requestId: requ._id, fromUser: requ.from._id }, (val) => { dispatch(rejectRequest(requ)) })
     }
 
     const handleRequestAccept = (requ) => {
-        socket.emit("accept-request", { from: requ._id, to: myId }, (val) => {
-            dispatch(requestAccept(requ))
-            dispatch(addChat(val.chat))
+        socket.emit("accept-request", requ, (val) => {
+            dispatch(requestAccept(val))
         })
     }
 
     return (
         <div>
             <Link to="/home">Home</Link>
-            <h1>friends</h1>
+            <h1>Requests</h1>
             <form onSubmit={handleRequest}>
                 <input type="text" placeholder="username" required value={username} onChange={e => { setusername(e.target.value) }} />
                 <input type="submit" value="send" />
             </form>
             <br />
             <button onClick={() => { setrefresh(true) }}>refresh</button>
+            <br />
             <div>
-                <h5>frinds</h5>
                 {
-                    friends?.friends?.map(ele => {
-                        return <p>{ele.name} <button>chat</button></p>
-                    })
-                }
-            </div>
-            <div>
-                <h5>incoming</h5>
-                {
-                    friends?.incoming?.map(ele => {
-                        return <p>{ele.name} <button onClick={() => { handleRequestReject(ele) }}>reject</button> <button onClick={() => { handleRequestAccept(ele) }}>accept</button></p>
-                    })
-                }
-            </div>
-            <div>
-                <h5>outgoing </h5>
-                {
-                    friends?.outgoing?.map(ele => {
-                        return <p>{ele.name} <button onClick={() => { handleRequestCancel(ele) }}>cancel</button></p>
+                    requests.map(ele => {
+                        if (ele.to._id == myId) {
+                            return <div>
+                                <p>{ele.from.name} - {ele.from.username}</p>
+                                <button onClick={()=>{handleRequestReject(ele)}}>reject</button> <button onClick={()=>{handleRequestAccept(ele)}}>accept</button>
+                            </div>
+                        } else {
+                            return <div>
+                                <p>{ele.to.name} - {ele.to.username} <button onClick={()=>{handleRequestCancel(ele)}}>cancel</button></p>
+                            </div>
+                        }
                     })
                 }
             </div>
