@@ -1,19 +1,26 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
+import ChatNavbar from './ChatNavbar'
+import { useDispatch, useSelector } from 'react-redux'
+import { openChat } from '../../../redux/app/appReducers'
 
 const ChatSection = () => {
     const params = useParams()
+    const dispatch = useDispatch()
+    const opendChat = useSelector(state => state.app.opendChat);
 
-    const content = (
-        <div>{params.chatId}</div>
+    useEffect(() => {
+        if (params.chatId) {
+            dispatch(openChat(params.chatId))
+        }
+    }, [params.chatId])
+
+    return (
+        <div>
+            <ChatNavbar name={opendChat.name} />
+
+        </div>
     )
-
-    if (params.chatId) {
-        return content
-    } else {
-        return (<div>ChatSection</div>)
-    }
-
 }
 
 export default ChatSection

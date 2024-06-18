@@ -18,8 +18,8 @@ const updateUser = createAsyncThunk("user/upate", async (data) => {
     return await axiosInstance.put("user/update/profile", data, { headers: { Authorization: loadToken() } })
 })
 
-const loadChats = createAsyncThunk("user/chats", async () => {;
+const fetchChats = createAsyncThunk("user/chats", async () => {
     return await axiosInstance.get("user/get-chats", { headers: { Authorization: loadToken() } })
 })
 
-export { userSignin, userSignup, getFriends, updateUser, loadChats }
+export { userSignin, userSignup, getFriends, updateUser, fetchChats }

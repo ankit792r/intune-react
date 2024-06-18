@@ -1,18 +1,16 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, Outlet } from 'react-router-dom'
-import { loadChats } from '../../redux/user/userReducer'
+import { fetchChats } from '../../redux/user/userReducer'
 
 const HomePage = () => {
     const dispatch = useDispatch()
     const user = useSelector(state => state.user.user);
     const status = useSelector(state => state.user.status);
-    const chatLoaded = useSelector(state => state.app.chatLoaded)
+    const isChatLoaded = useSelector(state => state.app.isChatLoaded)
 
     useEffect(() => {
-        if (!chatLoaded) {
-            dispatch(loadChats())
-        }
+        dispatch(fetchChats())
     }, [])
 
     return (

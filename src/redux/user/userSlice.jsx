@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getFriends, loadChats, updateUser, userSignin, userSignup } from "./userReducer";
+import { fetchChats, getFriends, updateUser, userSignin, userSignup } from "./userReducer";
 import userInitialState from "./initialState";
 
 const initialState = {
@@ -62,7 +62,6 @@ const userSlice = createSlice({
             .addCase(userSignin.pending, (state) => { state.status = "loadng" })
             .addCase(userSignin.rejected, (state, action) => { state.status = "idle"; state.error = action.error.message })
             .addCase(userSignin.fulfilled, function (state, action) {
-                console.log(state.user);
                 state.status = "idle";
                 state.user = action.payload.data.user;
                 localStorage.setItem("token", action.payload.data.token)
@@ -85,11 +84,11 @@ const userSlice = createSlice({
                 state.user.username = action.payload.data.username
             })
 
-            .addCase(loadChats.pending, (state) => { state.state = 'loading' })
-            .addCase(loadChats.rejected, (state, action) => { state.state = 'idle'; state.error = action.error.message })
-            .addCase(loadChats.fulfilled, (state, action) => {
+            .addCase(fetchChats.pending, (state) => { state.state = 'loading' })
+            .addCase(fetchChats.rejected, (state, action) => { state.state = 'idle'; state.error = action.error.message })
+            .addCase(fetchChats.fulfilled, (state, action) => {
                 state.state = 'idle';
-                state.user.chats = action.payload.data.chats
+                state.user.chats = action.payload.data.chats;
             })
     }
 })

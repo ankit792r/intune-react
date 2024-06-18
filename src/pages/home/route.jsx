@@ -10,7 +10,7 @@ const homeRoute = {
     children: [
         {
             path: "",
-            element: <ChatSection/>,
+            element: (<h1>Server states</h1>),
         },
         {
             path: ":chatId",
