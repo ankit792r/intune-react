@@ -5,7 +5,7 @@ import landingRoute from "./pages/landing/route";
 import homeRoute from "./pages/home/route";
 import settingRoute from "./pages/setting/route";
 import accountRoute from "./pages/account/route";
-import friendsRoute from "./pages/friends/route";
+import requestRoute from "./pages/request/route";
 
 const router = createBrowserRouter([
     landingRoute,
@@ -13,7 +13,7 @@ const router = createBrowserRouter([
     settingRoute,
     authRoute,
     accountRoute,
-    friendsRoute,
+    requestRoute,
     catchAllRoute
 ])
 

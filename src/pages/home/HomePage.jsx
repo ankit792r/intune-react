@@ -18,7 +18,7 @@ const HomePage = () => {
         <div>
             <div>
                 <div>
-                    <Link to="/account">{user.username}</Link> <Link to="/friends">friends</Link> <Link to="/settings">settings</Link>
+                    <Link to="/account">{user.username}</Link> <Link to="/requests">requests</Link> <Link to="/settings">settings</Link>
                 </div>
                 <div>
                     <ul>

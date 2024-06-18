@@ -7,7 +7,7 @@ import { cancelSentRequest, rejectRequest, requestAccept, requestSent } from '..
 
 
 
-const FriendsPage = () => {
+const RequestPage = () => {
     const dispatch = useDispatch()
     const [refresh, setrefresh] = useState(false)
     const [username, setusername] = useState("")
@@ -74,4 +74,4 @@ const FriendsPage = () => {
     )
 }
 
-export default FriendsPage
+export default RequestPage
