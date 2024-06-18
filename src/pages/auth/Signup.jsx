@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
-import { signup } from '../../redux/auth/authReducer'
 import { userSignup } from '../../redux/user/userReducer'
 
 const Signup = () => {

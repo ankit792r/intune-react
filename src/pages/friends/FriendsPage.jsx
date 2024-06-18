@@ -3,8 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import socket from '../../services/socketService'
 import { getFriends } from '../../redux/user/userReducer'
-import { cancelSentRequest, rejectRequest, requestAccept, requestSent } from '../../redux/user/userSlice'
-import { addChat } from '../../redux/chat/chatSlice'
+import { cancelSentRequest, rejectRequest, requestAccept, requestSent } from '../../redux/user/userSlice';
 
 
 

@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { updateAccountInfo } from '../../redux/account/accountReducer'
 import { updateUser } from '../../redux/user/userReducer'
 
 const AccountEdit = () => {
