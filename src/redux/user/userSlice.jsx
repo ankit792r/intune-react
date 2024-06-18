@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchChats, getFriends, updateUser, userSignin, userSignup } from "./userReducer";
 import userInitialState from "./initialState";
+import { saveToken } from "../../utility/token";
 
 const initialState = {
     status: "idle",
@@ -64,7 +65,7 @@ const userSlice = createSlice({
             .addCase(userSignin.fulfilled, function (state, action) {
                 state.status = "idle";
                 state.user = action.payload.data.user;
-                localStorage.setItem("token", action.payload.data.token)
+                saveToken(action.payload.data.token)
                 state.authenticated = true;
             })
 
