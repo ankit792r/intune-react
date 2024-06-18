@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getFriends, updateUser, userSignin, userSignup } from "./userReducer";
+import { getFriends, loadChats, updateUser, userSignin, userSignup } from "./userReducer";
 import userInitialState from "./initialState";
 
 const initialState = {
@@ -83,6 +83,13 @@ const userSlice = createSlice({
                 state.state = 'idle';
                 state.user.name = action.payload.data.name
                 state.user.username = action.payload.data.username
+            })
+
+            .addCase(loadChats.pending, (state) => { state.state = 'loading' })
+            .addCase(loadChats.rejected, (state, action) => { state.state = 'idle'; state.error = action.error.message })
+            .addCase(loadChats.fulfilled, (state, action) => {
+                state.state = 'idle';
+                state.user.chats = action.payload.data.chats
             })
     }
 })
