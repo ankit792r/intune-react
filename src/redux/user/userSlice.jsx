@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchChats, getFriends, updateUser, userSignin, userSignup } from "./userReducer";
+import { fetchChat, fetchChats, getFriends, updateUser, userSignin, userSignup } from "./userReducer";
 import userInitialState from "./initialState";
-import { saveToken } from "../../utility/token";
+import { removeToken, saveToken } from "../../utility/token";
+import socket from "../../services/socketService";
 
 const initialState = {
     status: "idle",
@@ -15,9 +16,10 @@ const userSlice = createSlice({
     initialState,
     reducers: {
         logout: (state) => {
+            socket.disconnect()
             state.authenticated = false
             state.user = userInitialState
-            localStorage.removeItem("token")
+            removeToken()
         },
 
         incomingRequest: (state, action) => {
@@ -56,6 +58,12 @@ const userSlice = createSlice({
         requestAccepted: (state, action) => {
             state.user.chats.push(action.payload.newChat);
             state.user.requests = state.user.requests.filter(req => action.payload.requestId !== req._id)
+        },
+
+        insertMessage: (state, action) => {
+            const data = action.payload;
+            const index = state.user.chats.findIndex(chat => chat._id == data.chatId)
+            state.user.chats[index].messages.push(data.message)
         }
     },
     extraReducers: builder => {
@@ -77,23 +85,35 @@ const userSlice = createSlice({
             .addCase(getFriends.rejected, (state, action) => { state.status = 'idle'; state.error = action.error.message })
             .addCase(getFriends.fulfilled, (state, action) => { state.status = 'idle'; state.user.friends = action.payload.data.friends })
 
-            .addCase(updateUser.pending, (state) => { state.state = 'loading' })
-            .addCase(updateUser.rejected, (state, action) => { state.state = 'idle'; state.error = action.error.message })
+            .addCase(updateUser.pending, (state) => { state.status = 'loading' })
+            .addCase(updateUser.rejected, (state, action) => { state.status = 'idle'; state.error = action.error.message })
             .addCase(updateUser.fulfilled, (state, action) => {
                 state.state = 'idle';
                 state.user.name = action.payload.data.name
                 state.user.username = action.payload.data.username
             })
 
-            .addCase(fetchChats.pending, (state) => { state.state = 'loading' })
-            .addCase(fetchChats.rejected, (state, action) => { state.state = 'idle'; state.error = action.error.message })
+            .addCase(fetchChats.pending, (state) => { state.status = 'loading' })
+            .addCase(fetchChats.rejected, (state, action) => { state.status = 'idle'; state.error = action.error.message })
             .addCase(fetchChats.fulfilled, (state, action) => {
-                state.state = 'idle';
+                state.status = 'idle';
                 state.user.chats = action.payload.data.chats;
+            })
+
+            .addCase(fetchChat.pending, (state) => { state.status = 'loading' })
+            .addCase(fetchChat.rejected, (state, action) => { state.status = 'idle'; state.error = action.error.message })
+            .addCase(fetchChat.fulfilled, (state, action) => {
+                state.status = 'idle';
+                const data = action.payload.data;
+                const index = state.user.chats.findIndex(chat => chat._id == data._id)
+                state.user.chats[index].admin = data.admin
+                state.user.chats[index].members = data.members
+                console.log(index);
             })
     }
 })
 
 export const { logout, incomingRequest, canceledIncomingRequest, requestSent,
-    cancelSentRequest, rejectRequest, requestRejected, requestAccept, requestAccepted } = userSlice.actions;
+    cancelSentRequest, rejectRequest, requestRejected, requestAccept,
+    requestAccepted, insertMessage } = userSlice.actions;
 export default userSlice.reducer;

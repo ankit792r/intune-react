@@ -22,4 +22,8 @@ const fetchChats = createAsyncThunk("user/chats", async () => {
     return await axiosInstance.get("user/get-chats", { headers: { Authorization: loadToken() } })
 })
 
-export { userSignin, userSignup, getFriends, updateUser, fetchChats }
+const fetchChat = createAsyncThunk("user/chat", async (chatId) => {
+    return await axiosInstance.get(`user/get-chat/${chatId}`, { headers: { Authorization: loadToken() } })
+})
+
+export { userSignin, userSignup, getFriends, updateUser, fetchChats, fetchChat }

@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 import appInitialState from "./initialState";
-import { openChat } from "./appReducers";
 
 const appSlice = createSlice({
     name: "app",
@@ -9,14 +8,12 @@ const appSlice = createSlice({
         setChatLoaded: (state, action) => {
             state.isChatLoaded = action.payload
         },
-    },
-    extraReducers: builder => {
-        builder
-            .addCase(openChat.fulfilled, (state, action) => {
-                state.opendChat = action.payload
-            })
+
+        openChatWithIndex: (state, action) => {
+            state.openChatIndex = action.payload
+        }
     }
 })
 
-export const { setChatLoaded } = appSlice.actions
+export const { setChatLoaded, openChatWithIndex } = appSlice.actions
 export default appSlice.reducer

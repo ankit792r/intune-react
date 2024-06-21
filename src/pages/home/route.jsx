@@ -6,15 +6,15 @@ import ChatSection from "./chat/ChatSection"
 const homeRoute = {
     path: "/home",
     element: (<AuthMiddleware>
-        <HomePage/>
+        <HomePage />
     </AuthMiddleware>),
     children: [
         {
             path: "",
-            element: <ServerStats/>,
+            element: <ServerStats />,
         },
         {
-            path: ":chatId",
+            path: ":chatIndex",
             element: <ChatSection/>
         },
     ]

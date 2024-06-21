@@ -1,6 +1,6 @@
 const appInitialState = {
     isChatLoaded: false,
-    opendChat: {}
+    openChatIndex: null
 }
 
 export default appInitialState;

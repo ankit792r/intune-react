@@ -3,7 +3,7 @@ import { RouterProvider } from "react-router-dom";
 import router from './router.jsx';
 import socket from './services/socketService.js';
 import { useDispatch, useSelector } from 'react-redux';
-import { canceledIncomingRequest, incomingRequest, requestAccepted, requestRejected } from './redux/user/userSlice';
+import { canceledIncomingRequest, insertMessage, incomingRequest, requestAccepted, requestRejected } from './redux/user/userSlice';
 
 
 const App = () => {
@@ -27,6 +27,10 @@ const App = () => {
         dispatch(requestAccepted(data))
     }
 
+    const onIncomingMessage = (data) => {
+        dispatch(insertMessage(data))
+    }
+
     useEffect(() => {
         if (authenticated) {
             const token = localStorage.getItem("token")
@@ -37,6 +41,7 @@ const App = () => {
             socket.on("canceled-incoming-request", onCancelRequest)
             socket.on("request-rejected", onRequestRejected)
             socket.on("request-accepted", onRequestAccpted)
+            socket.on("incoming-message", onIncomingMessage)
         }
 
         return () => { socket.offAny(); }
