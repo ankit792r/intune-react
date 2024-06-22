@@ -58,7 +58,7 @@ const ChatSection = () => {
                         <div className="input-group">
                             <input type="text" class="form-control" placeholder="message" aria-label="message" aria-describedby="message"
                                 value={message} onChange={(e) => { setMessage(e.target.value) }} />
-                            <button class="btn btn-secondary" type="button" id="message" onClick={handleSubmit}>Send</button>
+                            <button class="btn btn-primary" type="button" id="message" onClick={handleSubmit}>Send</button>
                         </div>
                     </div>
                 </div>
