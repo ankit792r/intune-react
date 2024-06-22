@@ -26,18 +26,34 @@ const Signin = () => {
 	}
 
 	return (
-		<div>
-			<h4>Signin here</h4>
-			<p>{error}</p>
-			<form onSubmit={handleSubmit}>
-				<input required autoFocus type="text" placeholder='email' value={email} onChange={e => setemail(e.target.value)} /> <br />
-				<input required  type="text" placeholder='password' value={password} onChange={e => setpassword(e.target.value)} /> <br />
+		<div className="card">
+			<form className='card-body' onSubmit={handleSubmit}>
+				<div className="card-title mb-3">
+					<h4>Signin here</h4>
+				</div>
 
-				<input type="submit" value='submit' />
+				{
+					error && (<div className="alert alert-danger my-3" role="alert">
+						{error}
+					</div>)
+				}
+
+				<div className="mb-3">
+					<label for="email" className="form-label">Email address</label>
+					<input type="email" className="form-control" id="email" aria-describedby="emailHelp" required
+						value={email} onChange={e => setemail(e.target.value)} />
+					<div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
+				</div>
+				<div className="mb-3">
+					<label for="password" className="form-label">Password</label>
+					<input type="password" className="form-control" id="password" required
+						value={password} onChange={e => setpassword(e.target.value)} />
+				</div>
+				<div>
+					<button type="submit" className="btn btn-primary">Submit</button>
+					<Link to="/auth/signup" className='btn btn-secondry'>Signup</Link>
+				</div>
 			</form>
-
-			<br />
-			<Link to="/auth/signup">signup</Link>
 		</div>
 	)
 }

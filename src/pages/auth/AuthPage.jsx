@@ -1,13 +1,14 @@
 import React from 'react'
-import { Link, Outlet } from 'react-router-dom'
+import { Outlet } from 'react-router-dom'
 
 const AuthPage = () => {
     return (
-        <div>
-            <Link to="/">home</Link>
-            <h1>Auth Page</h1>
-            <br />
-            <Outlet />
+        <div className='py-5'>
+            <div className="row justify-content-center">
+                <div className="col-md-4">
+                    <Outlet />
+                </div>
+            </div>
         </div>
     )
 }

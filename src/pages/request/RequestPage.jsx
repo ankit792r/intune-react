@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
 import socket from '../../services/socketService'
 import { getFriends } from '../../redux/user/userReducer'
 import { cancelSentRequest, rejectRequest, requestAccept, requestSent } from '../../redux/user/userSlice';
@@ -23,8 +22,7 @@ const RequestPage = () => {
         setrefresh(false)
     }, [refresh])
 
-    const handleRequest = (e) => {
-        e.preventDefault()
+    const handleRequest = () => {
         socket.emit("send-request", { to: username, from: myId }, (val) => { dispatch(requestSent(val)) })
         setusername("")
     }
@@ -44,31 +42,66 @@ const RequestPage = () => {
     }
 
     return (
-        <div>
-            <Link to="/home">Home</Link>
-            <h1>Requests</h1>
-            <form onSubmit={handleRequest}>
-                <input type="text" placeholder="username" required value={username} onChange={e => { setusername(e.target.value) }} />
-                <input type="submit" value="send" />
-            </form>
-            <br />
-            <button onClick={() => { setrefresh(true) }}>refresh</button>
-            <br />
-            <div>
-                {
-                    requests.map(ele => {
-                        if (ele.to._id == myId) {
-                            return <div>
-                                <p>{ele.from.name} - {ele.from.username}</p>
-                                <button onClick={()=>{handleRequestReject(ele)}}>reject</button> <button onClick={()=>{handleRequestAccept(ele)}}>accept</button>
-                            </div>
-                        } else {
-                            return <div>
-                                <p>{ele.to.name} - {ele.to.username} <button onClick={()=>{handleRequestCancel(ele)}}>cancel</button></p>
-                            </div>
-                        }
-                    })
-                }
+        <div className='py-5'>
+            <div className="row justify-content-center">
+
+                <div className="col-md-7">
+                    <div className="">
+                        <h1>Requests</h1>
+                        <p>checkout your incoming and outgoing requests</p>
+                    </div>
+
+                    <div class="input-group">
+                        <span class="input-group-text" id="basic-addon2">Username</span>
+                        <input type="text" class="form-control" id="inputGroupFile04" aria-describedby="username" aria-label="username"
+                            required value={username} onChange={e => { setusername(e.target.value) }} />
+                        <button onClick={handleRequest} class="btn btn-primary" type="button" id="username">Send</button>
+                    </div>
+
+                    <div className='pt-4'>
+                        <ul class="list-group">
+                            {
+                                requests.map((ele, inx) => {
+                                    const cont = (
+                                        <li className='list-group-item d-flex justify-content-between align-items-center'>
+                                            {
+                                                ele.to._id == myId
+                                                    ? (<div className='mt-2'>
+                                                        <h5>{ele.from.name}</h5>
+                                                        <p>{ele.from.username}</p>
+                                                    </div>)
+                                                    : (
+                                                        <div className='mt-2'>
+                                                            <h5>{ele.to.name}</h5>
+                                                            <p>{ele.to.username}</p>
+                                                        </div>
+                                                    )
+                                            }
+                                           
+                                            <div>
+                                                {
+                                                    ele.to._id == myId
+                                                        ? (
+                                                            <div>
+                                                                <button className='btn btn-success m-2' onClick={() => { handleRequestAccept(ele) }}>accept</button>
+                                                                <button className='btn btn-secondary' onClick={() => { handleRequestReject(ele) }}>reject</button>
+                                                            </div>
+                                                        ) : (
+                                                            <div>
+                                                                <button className='btn btn-secondary' onClick={() => { handleRequestCancel(ele) }}>cancel</button>
+                                                            </div>
+                                                        )
+                                                }
+                                            </div>
+                                        </li>
+                                    )
+
+                                    return cont
+                                })
+                            }
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     )

@@ -6,12 +6,16 @@ const LandingPage = () => {
   const authenticated = useSelector(state => state.user.authenticated);
 
   return (
-    <div>
-      <h1>Lets CHAT</h1>
-      <p>the best chatting app made ever.</p>
-      <br />
+    <div className='pt-5'>
+      <div className="col-md-8 mx-auto text-center">
+        <img src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo-shadow.png" width="200" height="165" alt="Bootstrap" className="d-none d-sm-block mx-auto mb-3" />
+        <h1 className="mb-3 fw-semibold lh-1">Build fast, responsive sites with&nbsp;Bootstrap</h1>
+        <p className="lead mb-4">
+          Powerful, extensible, and feature-packed frontend toolkit. Build and customize with Sass, utilize prebuilt grid system and components, and bring projects to life with powerful JavaScript plugins.
+        </p>
 
-      {authenticated ? <Link to="/home">Home</Link> : <Link to="/auth">signin</Link>}
+        <Link to="/auth" className="btn btn-lg btn-primary fw-semibold">signin</Link>
+      </div>
     </div>
   )
 }

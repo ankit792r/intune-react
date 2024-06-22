@@ -48,10 +48,12 @@ const App = () => {
     }, [authenticated])
 
     return (
-        <RouterProvider
-            fallbackElement={<h1>Not found</h1>}
-            router={router}
-            future={<h2>Future</h2>} />
+        <div className='px-4'>
+            <RouterProvider
+                fallbackElement={<h1>Not found</h1>}
+                router={router}
+                future={<h2>Future</h2>} />
+        </div>
     )
 }
 
