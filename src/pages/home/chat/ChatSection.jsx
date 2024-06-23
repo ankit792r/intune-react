@@ -46,7 +46,7 @@ const ChatSection = () => {
             <div className="col-8">
                 <div className="card">
                     <div className="card-header d-flex justify-content-between align-items-center">
-                        <span className="fw-bold">{chats[chatIndex].name} - {recieverData.username}</span>
+                        <span className="fw-bold">{chats[chatIndex].name} | {recieverData.username}</span>
                         <Link type="button" to="/home" class="btn-close" aria-label="Close"></Link>
                     </div>
                     <div ref={scrollRef} className="card-body" style={{ minHeight: "80vh", overflowY: "scroll" }} >

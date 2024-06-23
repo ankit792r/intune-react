@@ -83,12 +83,12 @@ const RequestPage = () => {
                                                     ele.to._id == myId
                                                         ? (
                                                             <div>
-                                                                <button className='btn btn-success m-2' onClick={() => { handleRequestAccept(ele) }}>accept</button>
-                                                                <button className='btn btn-secondary' onClick={() => { handleRequestReject(ele) }}>reject</button>
+                                                                <button className='btn btn-success' onClick={() => { handleRequestAccept(ele) }}>accept</button>
+                                                                <button className='btn btn-warning mx-2' onClick={() => { handleRequestReject(ele) }}>reject</button>
                                                             </div>
                                                         ) : (
                                                             <div>
-                                                                <button className='btn btn-secondary' onClick={() => { handleRequestCancel(ele) }}>cancel</button>
+                                                                <button className='btn btn-warning' onClick={() => { handleRequestCancel(ele) }}>cancel</button>
                                                             </div>
                                                         )
                                                 }

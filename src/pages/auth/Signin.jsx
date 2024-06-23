@@ -42,7 +42,7 @@ const Signin = () => {
 					<label for="email" className="form-label">Email address</label>
 					<input type="email" className="form-control" id="email" aria-describedby="emailHelp" required
 						value={email} onChange={e => setemail(e.target.value)} />
-					<div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
+					<div id="emailHelp" className="form-text">please use any temparary email there is no email varification required.</div>
 				</div>
 				<div className="mb-3">
 					<label for="password" className="form-label">Password</label>
@@ -50,8 +50,8 @@ const Signin = () => {
 						value={password} onChange={e => setpassword(e.target.value)} />
 				</div>
 				<div>
-					<button type="submit" className="btn btn-primary">Submit</button>
-					<Link to="/auth/signup" className='btn btn-secondry'>Signup</Link>
+					<button type="submit" className="btn btn-primary" data-mdb-ripple-init>Submit</button>
+					<Link to="/auth/signup" className='btn btn-secondary mx-2' data-mdb-ripple-init>Signup</Link>
 				</div>
 			</form>
 		</div>

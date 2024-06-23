@@ -42,14 +42,14 @@ const Signup = () => {
 
 				<div className="mb-3">
 					<label for="name" className="form-label">Name</label>
-					<input type="email" className="form-control" id="name" required 
+					<input type="text" className="form-control" id="name" required 
 						value={name} onChange={e => setname(e.target.value)} />
 				</div>
 
 				<div className="mb-3">
 					<label for="username" className="form-label">Username</label>
-					<input type="email" className="form-control" id="username" aria-describedby="usernameHelp" required
-						value={email} onChange={e => setemail(e.target.value)} />
+					<input type="text" className="form-control" id="username" aria-describedby="usernameHelp" required
+						value={username} onChange={e => setusername(e.target.value)} />
 					<div id="usernameHelp" className="form-text">username should be unique</div>
 				</div>
 
@@ -65,8 +65,8 @@ const Signup = () => {
 						value={password} onChange={e => setpassword(e.target.value)} />
 				</div>
 				<div>
-					<button type="submit" className="btn btn-primary">Submit</button>
-					<Link to="/auth" className='btn btn-secondry'>Signin</Link>
+					<button type="submit" className="btn btn-primary" data-mdb-ripple-init>Submit</button>
+					<Link to="/auth" className='btn btn-secondary mx-2' data-mdb-ripple-init>Signin</Link>
 				</div>
 			</form>
 		</div>

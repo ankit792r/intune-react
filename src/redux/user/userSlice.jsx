@@ -91,6 +91,7 @@ const userSlice = createSlice({
                 state.state = 'idle';
                 state.user.name = action.payload.data.name
                 state.user.username = action.payload.data.username
+                state.user.profilePic = action.payload.data.profilePic
             })
 
             .addCase(fetchChats.pending, (state) => { state.status = 'loading' })

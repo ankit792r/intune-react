@@ -8,6 +8,7 @@ const HomePage = () => {
     const dispatch = useDispatch()
     const fetched = useRef(false)
     const name = useSelector(state => state.user.user.name);
+    const profilePic = useSelector(state => state.user.user.profilePic);
     const chats = useSelector(state => state.user.user.chats);
     const status = useSelector(state => state.user.status);
 
@@ -27,7 +28,7 @@ const HomePage = () => {
                     <div class="card mb-3">
                         <div class="row g-0">
                             <div class="col-md-4">
-                                <img src="https://silvawebdesigns.com/wp-content/uploads/2021/04/json-beautifier-online.jpg" class="img-fluid rounded-start" alt="..." style={{ objectFit: "cover", width: "100%", height: "100%", }} />
+                                <img loading="lazy" src={profilePic} alt="..." className='rounded-start' style={{ objectFit: "cover", width: "100%", height: "100%", }} />
                             </div>
                             <div class="col">
                                 <div class="card-body">

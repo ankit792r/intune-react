@@ -15,7 +15,12 @@ const getFriends = createAsyncThunk("user/friends", async () => {
 })
 
 const updateUser = createAsyncThunk("user/upate", async (data) => {
-    return await axiosInstance.put("user/update/profile", data, { headers: { Authorization: loadToken() } })
+    const formData = new FormData()
+    formData.append("profilePic", data.profile)
+    formData.append("name", data.name)
+    formData.append("username", data.username)
+
+    return await axiosInstance.put("user/update/profile", formData, { headers: { "Content-Type":"multipart/form-data", Authorization: loadToken() } })
 })
 
 const fetchChats = createAsyncThunk("user/chats", async () => {
