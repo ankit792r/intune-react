@@ -50,7 +50,7 @@ const HomePage = () => {
                                         {
                                             chats.map((chat, index) => {
                                                 return (
-                                                    <Link to={`/home/${index}`} className="list-group-item list-group-item-action" >
+                                                    <Link key={index} to={`/home/${index}`} className="list-group-item list-group-item-action" >
                                                         <h6 className="mb-1">{chat.name}</h6>
                                                     </Link>
                                                 )

@@ -39,13 +39,13 @@ const Signin = () => {
 				}
 
 				<div className="mb-3">
-					<label for="email" className="form-label">Email address</label>
+					<label htmlFor="email" className="form-label">Email address</label>
 					<input type="email" className="form-control" id="email" aria-describedby="emailHelp" required
 						value={email} onChange={e => setemail(e.target.value)} />
 					<div id="emailHelp" className="form-text">please use any temparary email there is no email varification required.</div>
 				</div>
 				<div className="mb-3">
-					<label for="password" className="form-label">Password</label>
+					<label htmlFor="password" className="form-label">Password</label>
 					<input type="password" className="form-control" id="password" required
 						value={password} onChange={e => setpassword(e.target.value)} />
 				</div>
