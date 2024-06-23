@@ -51,15 +51,15 @@ const RequestPage = () => {
                         <p>checkout your incoming and outgoing requests</p>
                     </div>
 
-                    <div class="input-group">
-                        <span class="input-group-text" id="basic-addon2">Username</span>
-                        <input type="text" class="form-control" id="inputGroupFile04" aria-describedby="username" aria-label="username"
+                    <div className="input-group">
+                        <span className="input-group-text" id="basic-addon2">Username</span>
+                        <input type="text" className="form-control" id="inputGroupFile04" aria-describedby="username" aria-label="username"
                             required value={username} onChange={e => { setusername(e.target.value) }} />
-                        <button onClick={handleRequest} class="btn btn-primary" type="button" id="username">Send</button>
+                        <button onClick={handleRequest} className="btn btn-primary" type="button" id="username">Send</button>
                     </div>
 
                     <div className='pt-4'>
-                        <ul class="list-group">
+                        <ul className="list-group">
                             {
                                 requests.map((ele, inx) => {
                                     const cont = (

@@ -47,7 +47,7 @@ const ChatSection = () => {
                 <div className="card">
                     <div className="card-header d-flex justify-content-between align-items-center">
                         <span className="fw-bold">{chats[chatIndex].name} | {recieverData.username}</span>
-                        <Link type="button" to="/home" class="btn-close" aria-label="Close"></Link>
+                        <Link type="button" to="/home" className="btn-close" aria-label="Close"></Link>
                     </div>
                     <div ref={scrollRef} className="card-body" style={{ minHeight: "80vh", overflowY: "scroll" }} >
                         {chats[chatIndex].messages.map((ele) => {
@@ -56,9 +56,9 @@ const ChatSection = () => {
                     </div>
                     <div className="card-footer">
                         <div className="input-group">
-                            <input type="text" class="form-control" placeholder="message" aria-label="message" aria-describedby="message"
+                            <input type="text" className="form-control" placeholder="message" aria-label="message" aria-describedby="message"
                                 value={message} onChange={(e) => { setMessage(e.target.value) }} />
-                            <button class="btn btn-primary" type="button" id="message" onClick={handleSubmit}>Send</button>
+                            <button className="btn btn-primary" type="button" id="message" onClick={handleSubmit}>Send</button>
                         </div>
                     </div>
                 </div>

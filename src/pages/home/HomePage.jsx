@@ -22,36 +22,36 @@ const HomePage = () => {
 
     return (
         <div className="py-3" >
-            <div class="row g-4">
-                <div class="col-3">
+            <div className="row g-4">
+                <div className="col-3">
 
-                    <div class="card mb-3">
-                        <div class="row g-0">
-                            <div class="col-md-4">
+                    <div className="card mb-3">
+                        <div className="row g-0">
+                            <div className="col-md-4">
                                 <img loading="lazy" src={profilePic} alt="..." className='rounded-start' style={{ objectFit: "cover", width: "100%", height: "100%", }} />
                             </div>
-                            <div class="col">
-                                <div class="card-body">
-                                    <h5 class="card-title">{name}</h5>
-                                    <div class="card-text"><Link to="/account">account</Link> <Link to="/requests">requests</Link> </div>
+                            <div className="col">
+                                <div className="card-body">
+                                    <h5 className="card-title">{name}</h5>
+                                    <div className="card-text"><Link to="/account">account</Link> <Link to="/requests">requests</Link> </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
 
-                    <div class="list-group">
+                    <div className="list-group">
                         {
                             status === "loading"
                                 ? <Spinner/>
                                 : <div>
                                     <p className='fw-bold mt-2'>Chats</p>
-                                    <div class="list-group">
+                                    <div className="list-group">
                                         {
                                             chats.map((chat, index) => {
                                                 return (
-                                                    <Link to={`/home/${index}`} class="list-group-item list-group-item-action" >
-                                                        <h6 class="mb-1">{chat.name}</h6>
+                                                    <Link to={`/home/${index}`} className="list-group-item list-group-item-action" >
+                                                        <h6 className="mb-1">{chat.name}</h6>
                                                     </Link>
                                                 )
                                             })
@@ -62,7 +62,7 @@ const HomePage = () => {
                         }
                     </div>
                 </div>
-                <div class="col">
+                <div className="col">
                     <Outlet />
                 </div>
 
