@@ -15,14 +15,7 @@ const ChatSection = () => {
     const chats = useSelector((state) => state.user.user.chats);
     const recieverData = chats[chatIndex].members.find((mem) => mem._id !== myId);
 
-    const scrollRef = useRef()
     const [message, setMessage] = useState("");
-
-    useEffect(() => {
-        scrollRef.current.scrollIntoView({
-            behavior: 'smooth'
-        });
-    }, [chats[chatIndex]])
 
     const handleSubmit = () => {
         setMessage("");
@@ -49,7 +42,7 @@ const ChatSection = () => {
                         <span className="fw-bold">{chats[chatIndex].name} | {recieverData.username}</span>
                         <Link type="button" to="/home" className="btn-close" aria-label="Close"></Link>
                     </div>
-                    <div ref={scrollRef} className="card-body" style={{ minHeight: "80vh", overflowY: "scroll" }} >
+                    <div className="card-body" style={{ minHeight: "80vh", overflowY: "scroll" }} >
                         {chats[chatIndex].messages.map((ele) => {
                             return <Message message={ele} myId={myId} />
                         })}
@@ -58,7 +51,10 @@ const ChatSection = () => {
                         <div className="input-group">
                             <input type="text" className="form-control" placeholder="message" aria-label="message" aria-describedby="message"
                                 value={message} onChange={(e) => { setMessage(e.target.value) }} />
-                            <button className="btn btn-primary" type="button" id="message" onClick={handleSubmit}>Send</button>
+                            <button className="btn btn-primary" type="button" id="message" onClick={handleSubmit}>
+                                <i class="fa-solid fa-paper-plane me-2"></i>
+                                send
+                            </button>
                         </div>
                     </div>
                 </div>

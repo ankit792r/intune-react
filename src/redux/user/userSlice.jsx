@@ -88,7 +88,7 @@ const userSlice = createSlice({
             .addCase(updateUser.pending, (state) => { state.status = 'loading' })
             .addCase(updateUser.rejected, (state, action) => { state.status = 'idle'; state.error = action.error.message })
             .addCase(updateUser.fulfilled, (state, action) => {
-                state.state = 'idle';
+                state.status = 'idle';
                 state.user.name = action.payload.data.name
                 state.user.username = action.payload.data.username
                 state.user.profilePic = action.payload.data.profilePic

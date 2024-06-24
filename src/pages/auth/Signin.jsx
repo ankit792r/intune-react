@@ -50,7 +50,10 @@ const Signin = () => {
 						value={password} onChange={e => setpassword(e.target.value)} />
 				</div>
 				<div>
-					<button type="submit" className="btn btn-primary" data-mdb-ripple-init>Submit</button>
+					{
+						status == "loading" ? <Spinner /> : <button type="submit" className="btn btn-primary" data-mdb-ripple-init>Submit</button>
+					}
+
 					<Link to="/auth/signup" className='btn btn-secondary mx-2' data-mdb-ripple-init>Signup</Link>
 				</div>
 			</form>

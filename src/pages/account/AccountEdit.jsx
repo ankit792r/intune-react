@@ -2,10 +2,12 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { updateUser } from '../../redux/user/userReducer'
 import { logout } from '../../redux/user/userSlice'
+import Spinner from "../../components/Spinner";
 
 const AccountEdit = () => {
     const dispatch = useDispatch()
     const info = useSelector(state => state.user.user)
+    const status = useSelector(state => state.user.status)
     const [name, setname] = useState(info.name)
     const [username, setusername] = useState(info.username)
 
@@ -42,7 +44,9 @@ const AccountEdit = () => {
 
 
             <div className='d-flex justify-content-between'>
-                <button type="submit" onClick={handleSubmit} className="btn btn-primary">Submit</button>
+                {
+                    status == "loading" ? <Spinner/> : <button type="submit" onClick={handleSubmit} className="btn btn-primary">Submit</button>
+                }
                 <button className='btn btn-danger' onClick={() => { dispatch(logout()) }}>logout</button>
             </div>
 

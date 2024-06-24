@@ -7,6 +7,7 @@ const Signup = () => {
 	const dispatch = useDispatch()
 	const navigate = useNavigate()
 
+	const status = useSelector(state => state.user.status);
 	const error = useSelector(state => state.user.error);
 	const auth = useSelector(state => state.user.auth);
 
@@ -42,7 +43,7 @@ const Signup = () => {
 
 				<div className="mb-3">
 					<label htmlFor="name" className="form-label">Name</label>
-					<input type="text" className="form-control" id="name" required 
+					<input type="text" className="form-control" id="name" required
 						value={name} onChange={e => setname(e.target.value)} />
 				</div>
 
@@ -65,7 +66,10 @@ const Signup = () => {
 						value={password} onChange={e => setpassword(e.target.value)} />
 				</div>
 				<div>
-					<button type="submit" className="btn btn-primary" data-mdb-ripple-init>Submit</button>
+					{
+						status == "loading" ? <Spinner /> : <button type="submit" className="btn btn-primary" data-mdb-ripple-init>Submit</button>
+					}
+
 					<Link to="/auth" className='btn btn-secondary mx-2' data-mdb-ripple-init>Signin</Link>
 				</div>
 			</form>
