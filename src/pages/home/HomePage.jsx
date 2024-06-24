@@ -24,6 +24,7 @@ const HomePage = () => {
             <div className="row g-4">
                 <div className="col-3">
                     <div className="" style={{ minHeight: "90vh" }}>
+                        <h5 className='fw-bold'> Chats - {chats.length}</h5> 
                         <div className="list-group">
                             {
                                 status === "loading"
@@ -34,7 +35,7 @@ const HomePage = () => {
                                                 chats.map((chat, index) => {
                                                     return (
                                                         <Link key={index} to={`/home/${index}`} className="list-group-item list-group-item-action" >
-                                                            <h6 className="mb-1">{chat.name}</h6>
+                                                            <p className="fw-bold mb-1">{chat.name}</p>
                                                         </Link>
                                                     )
                                                 })

@@ -43,8 +43,8 @@ const ChatSection = () => {
                         <Link type="button" to="/home" className="btn-close" aria-label="Close"></Link>
                     </div>
                     <div className="card-body" style={{ minHeight: "80vh", overflowY: "scroll" }} >
-                        {chats[chatIndex].messages.map((ele) => {
-                            return <Message message={ele} myId={myId} />
+                        {chats[chatIndex].messages.map((ele, inx) => {
+                            return <Message key={inx} message={ele} myId={myId} />
                         })}
                     </div>
                     <div className="card-footer">
@@ -52,7 +52,7 @@ const ChatSection = () => {
                             <input type="text" className="form-control" placeholder="message" aria-label="message" aria-describedby="message"
                                 value={message} onChange={(e) => { setMessage(e.target.value) }} />
                             <button className="btn btn-primary" type="button" id="message" onClick={handleSubmit}>
-                                <i class="fa-solid fa-paper-plane me-2"></i>
+                                <i className="fa-solid fa-paper-plane me-2"></i>
                                 send
                             </button>
                         </div>
