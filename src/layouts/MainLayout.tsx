@@ -1,11 +1,15 @@
 import { Outlet } from "react-router-dom"
+import MainSidebar from "../comps/organisms/MainSidebar"
 
 
 const MainLayout = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-zinc-900 to-black flex items-center justify-center p-4">
-      <Outlet />
-    </div>
+    <main className="h-screen overflow-hidden">
+      <div className="flex h-full">
+        <MainSidebar />
+        <Outlet />
+      </div>
+    </main>
   )
 }
 
