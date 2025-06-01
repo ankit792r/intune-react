@@ -1,17 +1,9 @@
-import LoginForm from "../organisms/LoginForm"
+import LoginSection from "../organisms/LoginSection"
 
 
 const LoginPage = () => {
-
-    const onSubmit = (data: Record<string, string>) => {
-        console.log(data);
-        
-    }
-
     return (
-        <div>
-            <LoginForm onSubmitClick={onSubmit} loading={false} />
-        </div>
+        <LoginSection />
     )
 }
 

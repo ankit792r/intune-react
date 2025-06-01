@@ -1,17 +1,8 @@
-import RegisterForm from "../organisms/RegisterForm"
-
+import RegisterSection from "../organisms/RegisterSection"
 
 const RegisterPage = () => {
-
-    const onSubmit = (data: Record<string, string>) => {
-        console.log(data);
-        
-    }
-
     return (
-        <div>
-            <RegisterForm onSubmitClick={onSubmit} loading={false} />
-        </div>
+        <RegisterSection />
     )
 }
 
