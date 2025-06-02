@@ -5,6 +5,7 @@ import AuthLayout from "./layouts/AuthLayout";
 import LoginPage from "./comps/templates/LoginPage";
 import RegisterPage from "./comps/templates/RegisterPage";
 import ChatPage from "./comps/templates/ChatPage";
+import SettingsPage from "./comps/templates/SettingsPage";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Route element={<MainLayout />}>
         <Route index path="/chat" element={<ChatPage/>} />
         <Route path="/status" element={<h1>Status</h1>} />
+        <Route path="/settings" element={<SettingsPage />} />
       </Route>
       <Route path="/auth" element={<AuthLayout />}>
         <Route index element={<LoginPage />} />

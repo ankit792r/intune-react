@@ -1,30 +1,39 @@
 import { MessageCircle, Users, Settings, Image } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import { useAppDispatch, useAppSelector } from '../../state/hooks'
+import { changeActivePage } from '../../state/features/mainLayoutSlice'
 
 type Props = {}
 
 const MainSidebar = (props: Props) => {
+  const dispatch = useAppDispatch()
+  const activePage = useAppSelector(state => state.mainLayoutSlice.activePage)
+
   return (
     <div className="hidden lg:flex w-16 bg-white border-r border-gray-200 flex-col items-center py-4 space-y-6">
       <div className="flex flex-1 flex-col space-y-4">
-        <button className="w-10 h-10 bg-teal-500 text-white rounded-lg flex items-center justify-center">
+        <Link to="/chat" onClick={() => { dispatch(changeActivePage("CHAT")) }} className={`w-10 h-10 ${activePage == "CHAT" ? 'bg-teal-500 text-white' : 'text-gray-400 hover:text-gray-600 hover:bg-gray-100'} rounded-lg flex items-center justify-center`}>
           <MessageCircle />
-        </button>
+        </Link>
 
-        <button
-          className="w-10 h-10 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg flex items-center justify-center">
+        <Link to="/friends"
+          onClick={() => { dispatch(changeActivePage("FRIENDS")) }}
+          className={`w-10 h-10 ${activePage == "FRIENDS" ? 'bg-teal-500 text-white' : 'text-gray-400 hover:text-gray-600 hover:bg-gray-100'} rounded-lg flex items-center justify-center`}>
           <Users />
-        </button>
+        </Link>
 
-        <button
-          className="w-10 h-10 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg flex items-center justify-center">
+        <Link to="/status"
+          onClick={() => { dispatch(changeActivePage("STATUS")) }}
+          className={`w-10 h-10 ${activePage == "STATUS" ? 'bg-teal-500 text-white' : 'text-gray-400 hover:text-gray-600 hover:bg-gray-100'} rounded-lg flex items-center justify-center`}>
           <Image />
-        </button>
+        </Link>
       </div>
       <div className="flex-shrink-0">
-        <button
-          className="w-10 h-10 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg flex items-center justify-center">
+        <Link to="/settings"
+          onClick={() => { dispatch(changeActivePage("SETTINGS")) }}
+          className={`w-10 h-10 ${activePage == "SETTINGS" ? 'bg-teal-500 text-white' : 'text-gray-400 hover:text-gray-600 hover:bg-gray-100'} rounded-lg flex items-center justify-center`}>
           <Settings />
-        </button>
+        </Link>
       </div>
     </div>
   )

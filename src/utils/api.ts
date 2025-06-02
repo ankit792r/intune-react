@@ -20,11 +20,10 @@ axiosInstance.interceptors.response.use(
                 error.response.data?.message ||
                 `HTTP error! status: ${error.response.status}`;
             throw new Error(errorMessage);
-        } else if (error.request) {
+        } else if (error.request)
             throw new Error("No response received from server");
-        } else {
+        else
             throw new Error("Error setting up the request");
-        }
     }
 );
 
