@@ -3,9 +3,8 @@ import { Link } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from '../../state/hooks'
 import { changeActivePage } from '../../state/features/mainLayoutSlice'
 
-type Props = {}
 
-const MainSidebar = (props: Props) => {
+const MainSidebar = () => {
   const dispatch = useAppDispatch()
   const activePage = useAppSelector(state => state.mainLayoutSlice.activePage)
 

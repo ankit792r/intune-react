@@ -1,15 +1,30 @@
 import EmailInputField from '../atoms/EmailInputField'
 import PasswordInputField from '../atoms/PasswordInputField'
 import AuthSubmitButton from '../atoms/AuthSubmitButton'
+import { useState, type FormEvent } from 'react'
+import { useAppSelector } from '../../state/hooks'
 
 type Props = {}
 
 const LoginForm = (props: Props) => {
+
+    const error = useAppSelector(state => state.authSlice.error.login)
+    const loading = useAppSelector(state => state.authSlice.loading.login)
+
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+
+    const handleSubmit = (e: FormEvent) => {
+        e.preventDefault()
+        console.log({ email, password })
+    }
+
     return (
-        <form className="mt-8 space-y-6" id="login-form">
+        <form onSubmit={handleSubmit} className="mt-8 space-y-6" id="login-form">
+            {error && <p className='p-4 text-gray-900 rounded-lg border border-red-500 bg-red-400/60'>{error}</p>}
             <div className="space-y-4">
-                <EmailInputField />
-                <PasswordInputField />
+                <EmailInputField email={email} onEmailChange={setEmail} />
+                <PasswordInputField password={password} onPasswordChange={setPassword} />
             </div>
             <div className="flex items-center justify-between">
                 <div className="flex items-center">
@@ -21,7 +36,7 @@ const LoginForm = (props: Props) => {
                     <a href="#" className="font-medium text-primary hover:text-primary-dark">Forgot your password?</a>
                 </div>
             </div>
-            <AuthSubmitButton />
+            <AuthSubmitButton disable={loading} />
         </form>
     )
 }

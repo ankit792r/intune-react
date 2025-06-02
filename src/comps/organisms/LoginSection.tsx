@@ -1,13 +1,15 @@
 import AuthLogo from '../atoms/AuthLogo'
-import AuthSubmitButton from '../atoms/AuthSubmitButton'
 import LoginForm from '../molecules/LoginForm'
 
-type Props = {}
+type Props = {
+  isLogin: boolean,
+  onLoginChange(isLogin: boolean): void
+}
 
 const LoginSection = (props: Props) => {
   return (
     <div className="max-w-md w-full space-y-8">
-        <AuthLogo />
+        <AuthLogo isLogin={props.isLogin} onLoginChange={props.onLoginChange} />
         <LoginForm />
     </div>
   )

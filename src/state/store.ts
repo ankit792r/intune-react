@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
-import authReducer from "./features/auth/authSlice"
+import authSlice from "./features/auth/authSlice"
+import userSlice from "./features/user/userSlice"
 import mainLayoutSlice from "./features/mainLayoutSlice"
 
 const store = configureStore({
     reducer: {
-        authReducer,
-        mainLayoutSlice
+        authSlice,
+        userSlice,
+        mainLayoutSlice,
     },
 })
 
