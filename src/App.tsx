@@ -5,6 +5,9 @@ import AuthLayout from "./layouts/AuthLayout";
 import ChatPage from "./comps/templates/ChatPage";
 import SettingsPage from "./comps/templates/SettingsPage";
 import AuthPage from "./comps/templates/AuthPage";
+import ProfileEditSection from "./comps/organisms/ProfileEditSection";
+import AccountEditSection from "./comps/organisms/AccountEditSection";
+import NotificationsEditSection from "./comps/organisms/NotificationsEditSection";
 
 function App() {
   return (
@@ -13,7 +16,12 @@ function App() {
       <Route element={<MainLayout />}>
         <Route index path="/chat" element={<ChatPage/>} />
         <Route path="/status" element={<h1>Status</h1>} />
-        <Route path="/settings" element={<SettingsPage />} />
+        <Route path="/settings" element={<SettingsPage />}>
+          <Route index path="" element={<ProfileEditSection />} />
+          <Route path="profile" element={<ProfileEditSection />} />
+          <Route path="account" element={<AccountEditSection />} />
+          <Route path="notifications" element={<NotificationsEditSection />} />
+        </Route>
       </Route>
       <Route path="/auth" element={<AuthLayout />}>
         <Route index element={<AuthPage />} />
