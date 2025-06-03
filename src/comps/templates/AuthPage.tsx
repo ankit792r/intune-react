@@ -3,7 +3,7 @@ import LoginSection from '../organisms/LoginSection'
 import RegisterSection from '../organisms/RegisterSection'
 
 const AuthPage = () => {
-    const [isLogin, setIsLogin] = useState<boolean>(false)
+    const [isLogin, setIsLogin] = useState<boolean>(true)
     return (
         <>
             {

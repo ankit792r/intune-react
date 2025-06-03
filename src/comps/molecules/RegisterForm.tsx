@@ -3,11 +3,17 @@ import EmailInputField from '../atoms/EmailInputField'
 import PasswordInputField from '../atoms/PasswordInputField'
 import AuthSubmitButton from '../atoms/AuthSubmitButton'
 import { useState, type FormEvent } from 'react'
-import { useAppSelector } from '../../state/hooks'
+import { useAppDispatch, useAppSelector } from '../../state/hooks'
+import { useNavigate } from 'react-router-dom'
+import { register } from '../../state/features/auth/authActions'
 
-type Props = {}
+type Props = {
+    onLoginChange(val: boolean): void
+}
+
 
 const RegisterForm = (props: Props) => {
+    const dispatch = useAppDispatch()
     const error = useAppSelector(state => state.authSlice.error.register)
     const loading = useAppSelector(state => state.authSlice.loading.register)
 
@@ -18,7 +24,8 @@ const RegisterForm = (props: Props) => {
 
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault()
-        console.log({ email, password })
+        dispatch(register({name, email, username, password}))
+            .unwrap().then(()=> {props.onLoginChange(true)})
     }
 
 

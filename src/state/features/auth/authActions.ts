@@ -27,7 +27,7 @@ export const register = createAsyncThunk<
     { rejectValue: string }
 >("auth/register", async (data, { rejectWithValue }) => {
     try {
-        return await api.post<RegisterResponse>("/auth/register", data)
+        return await api.post<RegisterResponse>("/user/register", data)
     } catch (error) {
         if (error instanceof AxiosError) {
             const errorResponse = error.response?.data as ApiResponse<unknown>;

@@ -2,21 +2,25 @@ import EmailInputField from '../atoms/EmailInputField'
 import PasswordInputField from '../atoms/PasswordInputField'
 import AuthSubmitButton from '../atoms/AuthSubmitButton'
 import { useState, type FormEvent } from 'react'
-import { useAppSelector } from '../../state/hooks'
+import { useAppDispatch, useAppSelector } from '../../state/hooks'
+import { login } from '../../state/features/auth/authActions'
+import { useNavigate } from 'react-router-dom'
 
 type Props = {}
 
 const LoginForm = (props: Props) => {
-
+    const dispatch = useAppDispatch()
+    const navigate = useNavigate()
     const error = useAppSelector(state => state.authSlice.error.login)
     const loading = useAppSelector(state => state.authSlice.loading.login)
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
-    const handleSubmit = (e: FormEvent) => {
+    const handleSubmit = async (e: FormEvent) => {
         e.preventDefault()
-        console.log({ email, password })
+        dispatch(login({ email, password })).unwrap()
+            .then(() => {navigate("/chat")})
     }
 
     return (

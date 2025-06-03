@@ -1,4 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit"
+import { login } from "../auth/authActions"
+import type { ApiResponse } from "../../../utils/api"
+import { saveToken } from "../../../utils/token"
 
 interface InitialState {
     isLoggedIn: boolean,
@@ -18,6 +21,16 @@ const userSlice = createSlice({
             state.isLoggedIn = false
             state.user = null
         }
+    },
+    extraReducers: builder => {
+        builder.addCase(login.fulfilled, (state, action) => {
+            const payload = action.payload as ApiResponse<LoginResponse>
+            if (payload.success) {
+                state.isLoggedIn = true
+                state.user = payload.data?.user as User
+                saveToken(payload.data?.token as string)
+            }
+        });
     }
 })
 
