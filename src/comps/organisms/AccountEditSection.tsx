@@ -4,7 +4,7 @@ type Props = {}
 
 const AccountEditSection = (props: Props) => {
     return (
-        <div id="account-section" className="flex-1 overflow-y-auto">
+        <div className="flex-1 bg-slate-100 overflow-y-auto overflow-y-auto">
             <div className="p-8 max-w-4xl">
                 <div className="mb-8">
                     <h2 className="text-2xl font-bold text-gray-900 mb-2">Account Settings</h2>

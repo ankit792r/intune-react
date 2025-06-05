@@ -1,4 +1,4 @@
-import SearchBar from '../atoms/SettingsSearchBar'
+import SearchBar from '../atoms/SideSearchBar'
 import ChatListHeader from '../molecules/ChatListHeader'
 import ChatList from '../molecules/ChatList'
 

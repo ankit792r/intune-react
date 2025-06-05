@@ -2,7 +2,7 @@ import React from 'react'
 
 type Props = {}
 
-const SettingsSearchBar = (props: Props) => {
+const SideSearchBar = (props: Props) => {
     console.log(props);
 
     return (
@@ -18,4 +18,4 @@ const SettingsSearchBar = (props: Props) => {
     )
 }
 
-export default SettingsSearchBar
+export default SideSearchBar

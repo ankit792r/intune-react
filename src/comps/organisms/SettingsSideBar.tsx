@@ -1,5 +1,5 @@
 import React from 'react'
-import SettingsSearchBar from '../atoms/SettingsSearchBar'
+import SettingsSearchBar from '../atoms/SideSearchBar'
 import SettingsList from '../molecules/SettingsList'
 import LogoutButton from '../atoms/LogoutButton'
 
