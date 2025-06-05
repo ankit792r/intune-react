@@ -2,7 +2,7 @@ import React from 'react'
 
 type Props = {}
 
-const BasicInformation = (props: Props) => {
+const EditBasicInfo = (props: Props) => {
     return (
         <div className="bg-white rounded-xl p-6 mb-6 shadow-sm border border-gray-200">
             <h3 className="text-lg font-semibold text-gray-900 mb-4">Basic Information</h3>
@@ -13,19 +13,7 @@ const BasicInformation = (props: Props) => {
                         className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500" />
                 </div>
                 <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
-                    <input type="text" value="Doe"
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500" />
-                </div>
-                <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Username</label>
-                    <input type="text" value="@johndoe"
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500" />
-                </div>
-                <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
-                    <input type="email" value="john.doe@example.com"
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500" />
+                    {/* some other updatable field */}
                 </div>
             </div>
             <div className="mt-4">
@@ -43,4 +31,4 @@ const BasicInformation = (props: Props) => {
     )
 }
 
-export default BasicInformation
+export default EditBasicInfo

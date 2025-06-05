@@ -1,6 +1,6 @@
 import React from 'react'
 import EditProfilePic from '../molecules/EditProfilePic'
-import BasicInformation from '../molecules/BasicInformation'
+import EditBasicInfo from '../molecules/EditBasicInfo'
 import EditStatus from '../molecules/EditStatus'
 
 type Props = {}
@@ -14,7 +14,7 @@ const ProfileEditSection = (props: Props) => {
                     <p className="text-gray-600">Manage your personal information and profile visibility</p>
                 </div>
                 <EditProfilePic />
-                <BasicInformation />
+                <EditBasicInfo />
                 <EditStatus />
             </div>
         </div>
