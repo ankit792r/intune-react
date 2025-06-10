@@ -11,7 +11,7 @@ const MainSidebar = () => {
   return (
     <div className="hidden lg:flex w-16 bg-white border-r border-gray-200 flex-col items-center py-4 space-y-6">
       <div className="flex flex-1 flex-col space-y-4">
-        <Link to="/chat" onClick={() => { dispatch(changeActivePage("CHAT")) }} className={`w-10 h-10 ${activePage == "CHAT" ? 'bg-teal-500 text-white' : 'text-gray-400 hover:text-gray-600 hover:bg-gray-100'} rounded-lg flex items-center justify-center`}>
+        <Link to="/" onClick={() => { dispatch(changeActivePage("CHAT")) }} className={`w-10 h-10 ${activePage == "CHAT" ? 'bg-teal-500 text-white' : 'text-gray-400 hover:text-gray-600 hover:bg-gray-100'} rounded-lg flex items-center justify-center`}>
           <MessageCircle />
         </Link>
 

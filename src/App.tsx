@@ -14,9 +14,8 @@ import FriendsListSection from "./comps/organisms/FriendsListSection";
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<h1>Home</h1>} />
-      <Route element={<MainLayout />}>
-        <Route index path="/chat" element={<ChatPage />} />
+      <Route path="/"  element={<MainLayout />}>
+        <Route index element={<ChatPage />} />
         <Route path="/status" element={<h1>Status</h1>} />
         <Route path="/settings" element={<SettingsPage />}>
           <Route index path="" element={<ProfileEditSection />} />

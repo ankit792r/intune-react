@@ -7,7 +7,7 @@ const AuthLayout = () => {
   const userLoggedIn = useAppSelector(state=> state.userSlice.isLoggedIn)
 
   useEffect(()=> {
-    if (userLoggedIn) navigate("/chat")
+    if (userLoggedIn) navigate("/")
   }, [userLoggedIn])
 
   return (

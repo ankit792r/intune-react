@@ -20,7 +20,7 @@ const LoginForm = (props: Props) => {
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault()
         dispatch(login({ email, password })).unwrap()
-            .then(() => {navigate("/chat")})
+            .then(() => {navigate("/")})
     }
 
     return (
