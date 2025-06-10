@@ -1,4 +1,5 @@
 import axios, { AxiosError, type AxiosRequestConfig } from "axios";
+import { getToken } from "./token";
 
 export interface ApiResponse<T> {
     success: boolean;
@@ -12,14 +13,33 @@ const axiosInstance = axios.create({
     withCredentials: true
 });
 
+
+axiosInstance.interceptors.request.use(
+    (config) => {
+        if (!config.url?.includes("/auth"))
+            config.headers.Authorization = `Bearer ${getToken()}`
+        return config
+    }
+)
+
 axiosInstance.interceptors.response.use(
     (response) => response.data,
-    (error: AxiosError<ApiResponse<unknown>>) => {
+    async (error: AxiosError<ApiResponse<unknown>>) => {
         if (error.response) {
-            const errorMessage =
-                error.response.data?.message ||
-                `HTTP error! status: ${error.response.status}`;
-            throw new Error(errorMessage);
+            if (error.response.status == 401) {
+                // token is expired, renew access token
+                // axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+                // axiosInstance.defaults.headers.common["Authorization"] = `Bearer ${token}`
+                // retry the original request
+
+                // https://blog.logrocket.com/using-axios-set-request-headers/
+                // https://medium.com/@sina.alizadeh120/repeating-failed-requests-after-token-refresh-in-axios-interceptors-for-react-js-apps-50feb54ddcbc
+            } else {
+                const errorMessage =
+                    error.response.data?.message ||
+                    `HTTP error! status: ${error.response.status}`;
+                throw new Error(errorMessage);
+            }
         } else if (error.request)
             throw new Error("No response received from server");
         else

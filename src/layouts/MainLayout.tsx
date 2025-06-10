@@ -8,9 +8,9 @@ const MainLayout = () => {
   const navigate = useNavigate()
   const userLoggedIn = useAppSelector(state=> state.userSlice.isLoggedIn)
 
-  // useEffect(()=> {
-  //   if (!userLoggedIn) navigate("/auth")
-  // }, [userLoggedIn])
+  useEffect(()=> {
+    if (!userLoggedIn) navigate("/auth")
+  }, [userLoggedIn])
 
   return (
     <main className="h-screen overflow-hidden">

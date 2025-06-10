@@ -61,11 +61,10 @@ export const updateBasic = createAsyncThunk<
 
 export const updateEmailRequest = createAsyncThunk<
     ApiResponse<unknown>,
-    UserEmailUpdate,
     { rejectValue: string }
->("user/updateEmailRequest", async (data, { rejectWithValue }) => {
+>("user/updateEmailRequest", async (_, { rejectWithValue }) => {
     try {
-        return await api.post<unknown>("/user/email-update-request", data)
+        return await api.get<unknown>("/user/email-update-request")
     } catch (error) {
         if (error instanceof AxiosError) {
             const errorResponse = error.response?.data as ApiResponse<unknown>;

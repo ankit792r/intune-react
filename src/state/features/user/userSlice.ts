@@ -49,6 +49,12 @@ const userSlice = createSlice({
         logoutUser: (state) => {
             state.isLoggedIn = false
             state.user = null
+        },
+        resetProfileError: (state) => {
+            state.error.profileUpdate = null
+        },
+        resetBasicError: (state) => {
+            state.error.basicUpdate = null
         }
     },
     extraReducers: builder => {
@@ -142,5 +148,5 @@ const userSlice = createSlice({
     }
 })
 
-export const { logoutUser } = userSlice.actions
+export const { logoutUser, resetProfileError, resetBasicError } = userSlice.actions
 export default userSlice.reducer
