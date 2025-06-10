@@ -1,5 +1,5 @@
-import MessageBubble from '../atoms/MessageBubble'
-import TypingIndicator from '../atoms/TypingIndicator'
+import MessageBubble from '../../atoms/chat/MessageBubble'
+import TypingIndicator from '../../atoms/chat/TypingIndicator'
 
 type Props = {}
 

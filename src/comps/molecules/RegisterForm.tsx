@@ -1,10 +1,9 @@
 import NameInputField from '../atoms/NameInputField'
 import EmailInputField from '../atoms/EmailInputField'
 import PasswordInputField from '../atoms/PasswordInputField'
-import AuthSubmitButton from '../atoms/AuthSubmitButton'
+import AuthSubmitButton from '../atoms/auth/AuthSubmitButton'
 import { useState, type FormEvent } from 'react'
 import { useAppDispatch, useAppSelector } from '../../state/hooks'
-import { useNavigate } from 'react-router-dom'
 import { register } from '../../state/features/auth/authActions'
 
 type Props = {

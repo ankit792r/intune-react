@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { useAppDispatch, useAppSelector } from '../../state/hooks'
-import { updateBasic } from '../../state/features/user/userActions'
-import { resetBasicError } from '../../state/features/user/userSlice'
+import { useAppDispatch, useAppSelector } from '../../../state/hooks'
+import { updateBasic } from '../../../state/features/user/userActions'
+import { resetBasicError } from '../../../state/features/user/userSlice'
 
 type Props = {}
 

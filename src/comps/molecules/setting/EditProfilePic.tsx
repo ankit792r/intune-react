@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import { useAppDispatch, useAppSelector } from '../../state/hooks'
-import { updateProfile } from '../../state/features/user/userActions'
-import { resetProfileError } from '../../state/features/user/userSlice'
+import { useAppDispatch, useAppSelector } from '../../../state/hooks'
+import { updateProfile } from '../../../state/features/user/userActions'
+import { resetProfileError } from '../../../state/features/user/userSlice'
 
 type Props = {}
 

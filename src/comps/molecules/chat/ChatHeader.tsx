@@ -1,4 +1,4 @@
-import ChatHeaderItem from '../atoms/ChatHeaderItem'
+import ChatHeaderItem from '../../atoms/chat/ChatHeaderItem'
 
 type Props = {}
 

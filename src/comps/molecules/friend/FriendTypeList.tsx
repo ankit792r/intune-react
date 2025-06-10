@@ -2,25 +2,20 @@
 
 
 import React from 'react'
-import type { IFriendType } from '../atoms/FriendTypeItem'
-import FriendTypeItem from '../atoms/FriendTypeItem'
+import type { IFriendType } from '../../atoms/friend/FriendTypeItem'
+import FriendTypeItem from '../../atoms/friend/FriendTypeItem'
 
 const friendTypes: IFriendType[] = [
     {
-        name: "friends",
+        name: "Friends",
         description: "your casual friends",
-        link: "casual"
+        link: ""
     },
     {
-        name: "close",
-        description: "your close friends",
-        link: "close"
+        name: "Requests",
+        description: "See your friend requests",
+        link: "requests"
     },
-    {
-        name: "best",
-        description: "your best friends",
-        link: "best"
-    }
 ]
 
 type Props = {}

@@ -1,5 +1,5 @@
 import React from 'react'
-import ChatItem from '../atoms/ChatItem';
+import ChatItem from '../../atoms/chat/ChatItem';
 
 type Props = {}
 

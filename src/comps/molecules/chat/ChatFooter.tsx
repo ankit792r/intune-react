@@ -1,5 +1,5 @@
-import MessageInput from '../atoms/MessageInput'
-import SendButton from '../atoms/SendButton'
+import MessageInput from '../../atoms/chat/MessageInput'
+import SendButton from '../../atoms/chat/SendButton'
 
 type Props = {}
 

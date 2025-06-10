@@ -1,6 +1,6 @@
-import ChatBody from '../molecules/ChatBody'
-import ChatFooter from '../molecules/ChatFooter'
-import ChatHeader from '../molecules/ChatHeader'
+import ChatBody from '../../molecules/chat/ChatBody'
+import ChatFooter from '../../molecules/chat/ChatFooter'
+import ChatHeader from '../../molecules/chat/ChatHeader'
 
 type Props = {}
 

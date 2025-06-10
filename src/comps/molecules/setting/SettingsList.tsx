@@ -1,6 +1,6 @@
 import { Bell, Paintbrush2, Settings, User } from 'lucide-react';
 import React, { type ReactNode } from 'react'
-import SettingsListItem from '../atoms/SettingsListItem';
+import SettingsListItem from '../../atoms/SettingsListItem';
 
 type Props = {}
 

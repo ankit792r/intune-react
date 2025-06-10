@@ -1,4 +1,4 @@
-import AuthLogo from '../atoms/AuthLogo'
+import AuthLogo from '../atoms/auth/AuthLogo'
 import RegisterForm from '../molecules/RegisterForm'
 
 type Props = {

@@ -5,11 +5,11 @@ import AuthLayout from "./layouts/AuthLayout";
 import ChatPage from "./comps/templates/ChatPage";
 import SettingsPage from "./comps/templates/SettingsPage";
 import AuthPage from "./comps/templates/AuthPage";
-import ProfileEditSection from "./comps/organisms/ProfileEditSection";
-import AccountEditSection from "./comps/organisms/AccountEditSection";
-import NotificationsEditSection from "./comps/organisms/NotificationsEditSection";
+import AccountEditSection from "./comps/organisms/setting/AccountEditSection";
+import NotificationsEditSection from "./comps/organisms/setting/NotificationsEditSection";
 import FriendsPage from "./comps/templates/FriendsPage";
-import FriendsListSection from "./comps/organisms/FriendsListSection";
+import FriendsListSection from "./comps/organisms/friend/FriendsListSection";
+import ProfileEditSection from "./comps/organisms/setting/ProfileEditSection";
 
 function App() {
   return (
@@ -24,7 +24,8 @@ function App() {
           <Route path="notifications" element={<NotificationsEditSection />} />
         </Route>
         <Route path="/friends" element={<FriendsPage />}>
-          <Route index path=":friendType" element={<FriendsListSection />} />
+          <Route index element={<FriendsListSection />} />
+          <Route path=":friendType" element={<FriendsListSection />} />
         </Route>
       </Route>
       <Route path="/auth" element={<AuthLayout />}>

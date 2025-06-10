@@ -1,6 +1,7 @@
 import React from 'react'
-import SideSearchBar from '../atoms/SideSearchBar'
-import FriendTypeList from '../molecules/FriendTypeList'
+import SideSearchBar from '../../atoms/SideSearchBar'
+import FriendTypeList from '../../molecules/friend/FriendTypeList'
+import FriendRequestFrom from '../../atoms/friend/FriendRequestFrom'
 
 type Props = {}
 
@@ -10,11 +11,11 @@ const FriendsSideBar = (props: Props) => {
             <div className="p-4">
                 <SideSearchBar />
             </div>
-            <div className="flex-1 overflow-y-auto">
+            <div className="flex-1">
                 <FriendTypeList />
             </div>
             <div className="p-4 border-t border-gray-200">
-                <button>Util button</button>
+                <FriendRequestFrom />
             </div>
         </div>
     )

@@ -1,6 +1,6 @@
 import React from 'react'
-import ProfileHeader from '../molecules/ProfileHeader'
-import ProfileInfo from '../molecules/ProfileInfo'
+import ProfileHeader from '../../molecules/ProfileHeader'
+import ProfileInfo from '../../molecules/chat/ProfileInfo'
 
 type Props = {}
 

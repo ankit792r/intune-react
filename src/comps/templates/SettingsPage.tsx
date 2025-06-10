@@ -1,5 +1,5 @@
-import SettingsSideBar from '../organisms/SettingsSideBar'
 import { Outlet } from 'react-router-dom'
+import SettingsSideBar from '../organisms/setting/SettingsSideBar'
 
 type Props = {}
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import type { ISettings } from '../molecules/SettingsList'
+import type { ISettings } from '../molecules/setting/SettingsList'
 import { Link } from 'react-router-dom'
 
 type Props = {

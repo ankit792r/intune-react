@@ -1,7 +1,6 @@
-import React from 'react'
-import EditProfilePic from '../molecules/EditProfilePic'
-import EditBasicInfo from '../molecules/EditBasicInfo'
-import EditStatus from '../molecules/EditStatus'
+import EditBasicInfo from "../../molecules/setting/EditBasicInfo"
+import EditProfilePic from "../../molecules/setting/EditProfilePic"
+import EditStatus from "../../molecules/setting/EditStatus"
 
 type Props = {}
 

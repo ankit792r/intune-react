@@ -1,7 +1,7 @@
 import React from 'react'
-import EditEmail from '../molecules/EditEmail'
-import EditPassword from '../molecules/EditPassword'
-import TwoFacAuth from '../molecules/TwoFacAuth'
+import EditEmail from '../../molecules/setting/EditEmail'
+import EditPassword from '../../molecules/setting/EditPassword'
+import TwoFacAuth from '../../molecules/TwoFacAuth'
 
 type Props = {}
 

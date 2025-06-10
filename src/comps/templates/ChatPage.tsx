@@ -1,6 +1,6 @@
-import ChatSideBar from '../organisms/ChatSideBar'
-import ChatSection from '../organisms/ChatSection'
-import ProfileSection from '../organisms/ProfileSection'
+import ChatSideBar from '../organisms/chat/ChatSideBar'
+import ChatSection from '../organisms/chat/ChatSection'
+import ProfileSection from '../organisms/setting/ProfileSection'
 
 type Props = {}
 

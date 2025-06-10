@@ -1,6 +1,6 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
-import FriendsSideBar from '../organisms/FriendsSideBar'
+import FriendsSideBar from '../organisms/friend/FriendsSideBar'
 
 type Props = {}
 

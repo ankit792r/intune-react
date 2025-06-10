@@ -1,6 +1,6 @@
 import EmailInputField from '../atoms/EmailInputField'
 import PasswordInputField from '../atoms/PasswordInputField'
-import AuthSubmitButton from '../atoms/AuthSubmitButton'
+import AuthSubmitButton from '../atoms/auth/AuthSubmitButton'
 import { useState, type FormEvent } from 'react'
 import { useAppDispatch, useAppSelector } from '../../state/hooks'
 import { login } from '../../state/features/auth/authActions'

@@ -1,6 +1,6 @@
-import SideSearchBar from '../atoms/SideSearchBar'
-import ChatListHeader from '../molecules/ChatListHeader'
-import ChatList from '../molecules/ChatList'
+import SideSearchBar from '../../atoms/SideSearchBar'
+import ChatListHeader from '../../molecules/chat/ChatListHeader'
+import ChatList from '../../molecules/chat/ChatList'
 
 type Props = {}
 
