@@ -13,8 +13,8 @@ type Props = {
 
 const RegisterForm = (props: Props) => {
     const dispatch = useAppDispatch()
-    const error = useAppSelector(state => state.authSlice.error.register)
-    const loading = useAppSelector(state => state.authSlice.loading.register)
+    const error = useAppSelector(state => state.authReducer.error.register)
+    const loading = useAppSelector(state => state.authReducer.loading.register)
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")

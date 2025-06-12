@@ -6,7 +6,7 @@ import { useEffect } from "react"
 
 const MainLayout = () => {
   const navigate = useNavigate()
-  const userLoggedIn = useAppSelector(state=> state.userSlice.isLoggedIn)
+  const userLoggedIn = useAppSelector(state=> state.userReducer.isLoggedIn)
 
   useEffect(()=> {
     if (!userLoggedIn) navigate("/auth")

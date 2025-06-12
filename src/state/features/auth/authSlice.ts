@@ -24,8 +24,8 @@ const initialState: InitialState = {
     }
 }
 
-const authSlice = createSlice({
-    name: "authSlice",
+const authReducer = createSlice({
+    name: "authReducer",
     initialState,
     reducers: {},
     extraReducers: builder => {
@@ -40,7 +40,7 @@ const authSlice = createSlice({
             .addCase(login.fulfilled, (state, action) => {
                 const payload = action.payload as ApiResponse<LoginResponse>
                 if (payload.success) {
-                    // todo: update user in userSlice
+                    // todo: update user in userReducer
                 } else {
                     state.error.login = payload.message
                 }
@@ -61,5 +61,5 @@ const authSlice = createSlice({
     }
 })
 
-export const { } = authSlice.actions
-export default authSlice.reducer
+export const { } = authReducer.actions
+export default authReducer.reducer

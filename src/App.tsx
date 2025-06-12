@@ -10,6 +10,7 @@ import NotificationsEditSection from "./comps/organisms/setting/NotificationsEdi
 import FriendsPage from "./comps/templates/FriendsPage";
 import FriendsListSection from "./comps/organisms/friend/FriendsListSection";
 import ProfileEditSection from "./comps/organisms/setting/ProfileEditSection";
+import FriendRequestsList from "./comps/organisms/friend/FriendRequestsList";
 
 function App() {
   return (
@@ -25,7 +26,7 @@ function App() {
         </Route>
         <Route path="/friends" element={<FriendsPage />}>
           <Route index element={<FriendsListSection />} />
-          <Route path=":friendType" element={<FriendsListSection />} />
+          <Route path="requests" element={<FriendRequestsList />} />
         </Route>
       </Route>
       <Route path="/auth" element={<AuthLayout />}>

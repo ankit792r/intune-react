@@ -7,9 +7,9 @@ type Props = {}
 
 const EditBasicInfo = (props: Props) => {
     const dispatch = useAppDispatch()
-    const userSlice = useAppSelector(state => state.userSlice)
-    const [newName, setNewName] = useState(userSlice.user?.name as string)
-    const [newBio, setNewBio] = useState(userSlice.user?.bio)
+    const userReducer = useAppSelector(state => state.userReducer)
+    const [newName, setNewName] = useState(userReducer.user?.name as string)
+    const [newBio, setNewBio] = useState(userReducer.user?.bio)
 
     const onSaveClick = () => {
         dispatch(resetBasicError())
@@ -20,7 +20,7 @@ const EditBasicInfo = (props: Props) => {
         <div className="bg-white rounded-xl p-6 mb-6 shadow-sm border border-gray-200">
             <h3 className="text-lg font-semibold text-gray-900 mb-4">Basic Information</h3>
 
-            {userSlice.error.basicUpdate && <p className="text-red-400">{userSlice.error.basicUpdate}</p>}
+            {userReducer.error.basicUpdate && <p className="text-red-400">{userReducer.error.basicUpdate}</p>}
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
@@ -43,7 +43,7 @@ const EditBasicInfo = (props: Props) => {
             <div className="mt-6">
                 <button
                     onClick={onSaveClick}
-                    disabled={userSlice.loading.basicUpdate}
+                    disabled={userReducer.loading.basicUpdate}
                     className="px-6 py-2 bg-teal-500 text-white rounded-lg hover:bg-teal-600 transition-colors">
                     Save Changes
                 </button>

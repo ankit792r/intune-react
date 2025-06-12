@@ -6,7 +6,10 @@ type Props = {
 }
 
 const FriendList = (props: Props) => {
-  if (props.friendType) {
+  
+
+
+  if (props.friendType == "requests") {
     return (
       <div className="space-y-1">
         <FriendItem />

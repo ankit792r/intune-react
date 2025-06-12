@@ -11,8 +11,8 @@ type Props = {}
 const LoginForm = (props: Props) => {
     const dispatch = useAppDispatch()
     const navigate = useNavigate()
-    const error = useAppSelector(state => state.authSlice.error.login)
-    const loading = useAppSelector(state => state.authSlice.loading.login)
+    const error = useAppSelector(state => state.authReducer.error.login)
+    const loading = useAppSelector(state => state.authReducer.loading.login)
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")

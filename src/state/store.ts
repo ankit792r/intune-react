@@ -1,13 +1,15 @@
 import { configureStore } from '@reduxjs/toolkit'
-import authSlice from "./features/auth/authSlice"
-import userSlice from "./features/user/userSlice"
-import mainLayoutSlice from "./features/mainLayoutSlice"
+import authReducer from "./features/auth/authSlice"
+import userReducer from "./features/user/userSlice"
+import mainLayoutReducer from "./features/mainLayoutSlice"
+import friendsReducer from "./features/friends/friendsSlice"
 
 const store = configureStore({
     reducer: {
-        authSlice,
-        userSlice,
-        mainLayoutSlice,
+        authReducer,
+        userReducer,
+        mainLayoutReducer,
+        friendsReducer
     },
 })
 

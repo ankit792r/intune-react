@@ -42,8 +42,8 @@ const initialState: InitialState = {
     }
 }
 
-const userSlice = createSlice({
-    name: "userSlice",
+const userReducer = createSlice({
+    name: "userReducer",
     initialState,
     reducers: {
         logoutUser: (state) => {
@@ -148,5 +148,5 @@ const userSlice = createSlice({
     }
 })
 
-export const { logoutUser, resetProfileError, resetBasicError } = userSlice.actions
-export default userSlice.reducer
+export const { logoutUser, resetProfileError, resetBasicError } = userReducer.actions
+export default userReducer.reducer

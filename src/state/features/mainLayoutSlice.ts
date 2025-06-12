@@ -9,7 +9,7 @@ const initialState: InitialState = {
 }
 
 const mainLyoutSlice = createSlice({
-    name: "mainLayoutSlice",
+    name: "mainLayoutReducer",
     initialState,
     reducers: {
         changeActivePage: (state, action) => {

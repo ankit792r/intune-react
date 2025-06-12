@@ -7,8 +7,8 @@ type Props = {}
 
 const EditProfilePic = (props: Props) => {
     const dispatch = useAppDispatch()
-    const userSlice = useAppSelector(state => state.userSlice)
-    const [newUserName, setNewUserName] = useState(userSlice.user?.username as string)
+    const userReducer = useAppSelector(state => state.userReducer)
+    const [newUserName, setNewUserName] = useState(userReducer.user?.username as string)
 
     const onSaveClick = () => {
         dispatch(resetProfileError())
@@ -19,16 +19,16 @@ const EditProfilePic = (props: Props) => {
     return (
         <div className="bg-white rounded-xl p-6 mb-6 shadow-sm border border-gray-200">
             <h3 className="text-lg font-semibold text-gray-900 mb-4">Profile Details</h3>
-            {userSlice.error.profileUpdate && <p className="text-red-400">{userSlice.error.profileUpdate}</p>}
+            {userReducer.error.profileUpdate && <p className="text-red-400">{userReducer.error.profileUpdate}</p>}
             <div className="flex justify-between items-center space-x-6">
                 <div className="">
                     <input type="text" onChange={(e) => setNewUserName(e.target.value)} value={newUserName} placeholder="username"
                         className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500" />
                     <button
-                        disabled={userSlice.loading.profileUpdate}
+                        disabled={userReducer.loading.profileUpdate}
                         onClick={onSaveClick}
                         className="px-4 py-2 mt-4 bg-teal-500 text-white rounded-lg hover:bg-teal-600 transition-colors">
-                        { userSlice.loading.profileUpdate ? "Updating" : "Save Changes" }
+                        { userReducer.loading.profileUpdate ? "Updating" : "Save Changes" }
                     </button>
                 </div>
                 <div

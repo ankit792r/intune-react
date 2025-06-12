@@ -3,10 +3,9 @@ import { Link } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from '../../state/hooks'
 import { changeActivePage } from '../../state/features/mainLayoutSlice'
 
-
 const MainSidebar = () => {
   const dispatch = useAppDispatch()
-  const activePage = useAppSelector(state => state.mainLayoutSlice.activePage)
+  const activePage = useAppSelector(state => state.mainLayoutReducer.activePage)
 
   return (
     <div className="hidden lg:flex w-16 bg-white border-r border-gray-200 flex-col items-center py-4 space-y-6">
