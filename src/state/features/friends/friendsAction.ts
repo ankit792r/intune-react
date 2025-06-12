@@ -5,6 +5,7 @@ import { AxiosError } from "axios";
 
 export const getFriendsList = createAsyncThunk<
     ApiResponse<Friend[]>,
+    undefined,
     { rejectValue: string }
 >("friends/listFriends", async (_, { rejectWithValue }) => {
     try {
@@ -23,10 +24,11 @@ export const getFriendsList = createAsyncThunk<
 
 export const getFriendsRequestList = createAsyncThunk<
     ApiResponse<Friend[]>,
+    undefined,
     { rejectValue: string }
 >("friends/listFriendRequests", async (_, { rejectWithValue }) => {
     try {
-        return await api.get<Friend[]>("/friends/requests")
+        return await api.get<Friend[]>("/friends/list-requests")
     } catch (error) {
         if (error instanceof AxiosError) {
             const errorResponse = error.response?.data as ApiResponse<unknown>;
@@ -45,7 +47,7 @@ export const sendFriendRequest = createAsyncThunk<
     { rejectValue: string }
 >("friends/sendRequests", async (data, { rejectWithValue }) => {
     try {
-        return await api.post<Friend>("/friends/requests", data)
+        return await api.post<Friend>("/friends/new-request", data)
     } catch (error) {
         if (error instanceof AxiosError) {
             const errorResponse = error.response?.data as ApiResponse<unknown>;

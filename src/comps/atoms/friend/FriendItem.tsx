@@ -1,6 +1,8 @@
 import React from 'react'
 
-type Props = {}
+type Props = {
+    friend: Friend
+}
 
 const FriendItem = (props: Props) => {
     return (
