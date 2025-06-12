@@ -23,12 +23,12 @@ export const getFriendsList = createAsyncThunk<
 
 
 export const getFriendsRequestList = createAsyncThunk<
-    ApiResponse<Friend[]>,
+    ApiResponse<FriendRequest[]>,
     undefined,
     { rejectValue: string }
 >("friends/listFriendRequests", async (_, { rejectWithValue }) => {
     try {
-        return await api.get<Friend[]>("/friends/list-requests")
+        return await api.get<FriendRequest[]>("/friends/list-requests")
     } catch (error) {
         if (error instanceof AxiosError) {
             const errorResponse = error.response?.data as ApiResponse<unknown>;
@@ -67,6 +67,25 @@ export const updateFriendStatus = createAsyncThunk<
 >("friends/updateStatus", async (data, { rejectWithValue }) => {
     try {
         return await api.post<Friend | undefined>("/friends/update-status", data)
+    } catch (error) {
+        if (error instanceof AxiosError) {
+            const errorResponse = error.response?.data as ApiResponse<unknown>;
+            return rejectWithValue(errorResponse?.message || "An error occurred while accepting friend request");
+        }
+        return rejectWithValue(
+            error instanceof Error ? error.message : "An unknown error occurred"
+        )
+    }
+})
+
+
+export const deleteFriendRequest = createAsyncThunk<
+    ApiResponse<string>,
+    { requestId: string },
+    { rejectValue: string }
+>("friends/deleteRequest", async ({ requestId }, { rejectWithValue }) => {
+    try {
+        return await api.delete<string>(`/friends/delete/${requestId}`)
     } catch (error) {
         if (error instanceof AxiosError) {
             const errorResponse = error.response?.data as ApiResponse<unknown>;

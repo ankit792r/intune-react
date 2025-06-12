@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { getFriendsList, getFriendsRequestList, sendFriendRequest, updateFriendStatus } from "./friendsAction"
+import { deleteFriendRequest, getFriendsList, getFriendsRequestList, sendFriendRequest, updateFriendStatus } from "./friendsAction"
+import { data } from "react-router-dom"
 
 interface IFriendsInitialState {
     error: {
@@ -16,7 +17,7 @@ interface IFriendsInitialState {
         accept: boolean
         delete: boolean
     },
-    requests: Friend[]
+    requests: FriendRequest[]
     friends: Friend[]
 }
 
@@ -51,7 +52,7 @@ const friendSlice = createSlice({
                 state.loading.list = true
             })
             .addCase(getFriendsList.rejected, (state, action) => {
-                state.error.list = action.error.message as string
+                state.error.list = action.payload as string
                 state.loading.list = true
             })
             .addCase(getFriendsList.fulfilled, (state, action) => {
@@ -67,13 +68,13 @@ const friendSlice = createSlice({
                 state.loading.list = true
             })
             .addCase(getFriendsRequestList.rejected, (state, action) => {
-                state.error.list = action.error.message as string
+                state.error.list = action.payload as string
                 state.loading.list = true
             })
             .addCase(getFriendsRequestList.fulfilled, (state, action) => {
                 const payload = action.payload;
                 if (payload.success)
-                    state.requests = payload.data as Friend[]
+                    state.requests = payload.data as FriendRequest[]
                 else state.error.list = payload.message
                 state.loading.list = false
             });
@@ -84,11 +85,15 @@ const friendSlice = createSlice({
                 state.loading.send = true
             })
             .addCase(sendFriendRequest.rejected, (state, action) => {
-                state.error.send = action.error.message as string
+                console.log(action);
+                
+                state.error.send = action.payload as string
                 state.loading.send = false
             })
             .addCase(sendFriendRequest.fulfilled, (state, action) => {
                 const payload = action.payload;
+                console.log(action);
+                
                 if (payload.success)
                     state.friends.push(payload.data as Friend)
                 else state.error.send = payload.message
@@ -100,13 +105,33 @@ const friendSlice = createSlice({
                 state.loading.update = true
             })
             .addCase(updateFriendStatus.rejected, (state, action) => {
-                state.error.update = action.error.message as string
+                state.error.update = action.payload as string
                 state.loading.update = true
             })
             .addCase(updateFriendStatus.fulfilled, (state, action) => {
                 const payload = action.payload;
-                // find and replace the friend object
+                if (payload.success) {
+                    const idx = state.friends.findIndex(fri => fri.id == payload.data?.id)
+                    if (idx) state.friends[idx] = payload.data as Friend
+                } else state.error.update = payload.message
+
                 state.loading.update = false
+            });
+
+        builder
+            .addCase(deleteFriendRequest.pending, (state) => {
+                state.loading.delete = true
+            })
+            .addCase(deleteFriendRequest.rejected, (state, action) => {
+                state.error.delete = action.payload as string
+                state.loading.delete = true
+            })
+            .addCase(deleteFriendRequest.fulfilled, (state, action) => {
+                const payload = action.payload;
+                if (payload.success) {
+                    state.requests = state.requests.filter((req) => req.id != payload.data)
+                } else state.error.update = payload.message
+                state.loading.delete = false
             });
     },
 })

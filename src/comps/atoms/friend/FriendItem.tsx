@@ -1,10 +1,18 @@
-import React from 'react'
+import { useMemo } from "react"
+import { useAppSelector } from "../../../state/hooks"
 
 type Props = {
     friend: Friend
 }
 
 const FriendItem = (props: Props) => {
+
+    const userId = useAppSelector(state => state.userReducer.user?.id)
+    const friend = useMemo(() => props.friend.acceptor.id == userId
+        ? props.friend.initiator
+        : props.friend.acceptor,
+        [props.friend, userId])
+
     return (
         <div className=" p-3 hover:bg-gray-50 rounded-lg cursor-pointer hover:border-teal-500">
             <div className="flex items-center space-x-3">
@@ -18,8 +26,8 @@ const FriendItem = (props: Props) => {
                     </div>
                 </div>
                 <div className="flex-1 min-w-0">
-                    <div className="font-medium text-gray-900 truncate">Sarah Johnson</div>
-                    <div className="text-xs text-gray-500 truncate">Playing Spotify</div>
+                    <div className="font-medium text-gray-900 truncate">{friend.name}</div>
+                    <div className="text-xs text-gray-500 truncate">{friend.username}</div>
                 </div>
                 <div className="text-xs text-gray-400">2m</div>
             </div>

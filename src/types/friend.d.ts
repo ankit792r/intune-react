@@ -1,7 +1,15 @@
 interface Friend {
     id: string;
     status: string;
-    user: User
+    initiator: User;
+    acceptor: User
+}
+
+interface FriendRequest {
+    id: string;
+    status: string;
+    initiator: User;
+    acceptor: User
 }
 
 interface FriendRequestBody {
