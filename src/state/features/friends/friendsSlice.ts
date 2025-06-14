@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
 import { deleteFriendRequest, getFriendsList, getFriendsRequestList, sendFriendRequest, updateFriendStatus } from "./friendsAction"
-import { data } from "react-router-dom"
 
 interface IFriendsInitialState {
     error: {
@@ -92,8 +91,6 @@ const friendSlice = createSlice({
             })
             .addCase(sendFriendRequest.fulfilled, (state, action) => {
                 const payload = action.payload;
-                console.log(action);
-                
                 if (payload.success)
                     state.friends.push(payload.data as Friend)
                 else state.error.send = payload.message

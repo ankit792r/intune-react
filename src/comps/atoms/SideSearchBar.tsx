@@ -3,8 +3,6 @@ import React from 'react'
 type Props = {}
 
 const SideSearchBar = (props: Props) => {
-    console.log(props);
-
     return (
         <div className="relative">
             <input type="text" placeholder="Search"
