@@ -25,7 +25,7 @@ const LoginForm = (props: Props) => {
 
     return (
         <form onSubmit={handleSubmit} className="mt-8 space-y-6" id="login-form">
-            {error && <p className='p-4 text-gray-900 rounded-lg border border-red-500 bg-red-400/60'>{error}</p>}
+            {error && <p className='p-4 text-dark rounded-lg border border-red-500 bg-red-300/60'>{error}</p>}
             <div className="space-y-4">
                 <EmailInputField email={email} onEmailChange={setEmail} />
                 <PasswordInputField password={password} onPasswordChange={setPassword} />

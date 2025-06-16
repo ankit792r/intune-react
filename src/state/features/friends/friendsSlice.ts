@@ -92,7 +92,7 @@ const friendSlice = createSlice({
             .addCase(sendFriendRequest.fulfilled, (state, action) => {
                 const payload = action.payload;
                 if (payload.success)
-                    state.friends.push(payload.data as Friend)
+                    state.requests.push(payload.data as Friend)
                 else state.error.send = payload.message
                 state.loading.send = false
             });
@@ -108,10 +108,11 @@ const friendSlice = createSlice({
             .addCase(updateFriendStatus.fulfilled, (state, action) => {
                 const payload = action.payload;
                 if (payload.success) {
-                    const idx = state.friends.findIndex(fri => fri.id == payload.data?.id)
-                    if (idx) state.friends[idx] = payload.data as Friend
+                    if (payload.data?.status == "CONNECTED") {
+                        const idx = state.requests.findIndex(fri => fri.id == payload.data?.id)
+                        if (idx > -1) state.requests.splice(idx, 1)
+                    } else state.friends.push(payload.data as Friend)
                 } else state.error.update = payload.message
-
                 state.loading.update = false
             });
 
