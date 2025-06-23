@@ -2,6 +2,7 @@ import { Outlet, useNavigate } from "react-router-dom"
 import MainSidebar from "../comps/organisms/MainSidebar"
 import { useAppSelector } from "../state/hooks"
 import { useEffect } from "react"
+import { WebSocketProvider } from "../context/webSocketContext"
 
 
 const MainLayout = () => {
@@ -13,12 +14,14 @@ const MainLayout = () => {
   }, [navigate, userLoggedIn])
 
   return (
-    <main className="h-screen overflow-hidden">
-      <div className="flex h-full">
+    <WebSocketProvider>
+      <main className="h-screen overflow-hidden">
+        <div className="flex h-full">
           <MainSidebar />
           <Outlet />
-      </div>
-    </main>
+        </div>
+      </main>
+    </WebSocketProvider>
   )
 }
 

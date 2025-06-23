@@ -1,10 +1,12 @@
 import React, { useState, type FormEvent } from 'react'
 import { useAppDispatch, useAppSelector } from '../../../state/hooks'
 import { sendFriendRequest } from '../../../state/features/friends/friendsAction'
+import { useWebSocket } from '../../../context/webSocketContext'
 
 type Props = {}
 
 const FriendRequestFrom = (props: Props) => {
+    const { stompClient } = useWebSocket()
     const [username, setUsername] = useState("")
     const dispatch = useAppDispatch()
     const loading = useAppSelector(state => state.friendsReducer.loading.send)
@@ -13,7 +15,11 @@ const FriendRequestFrom = (props: Props) => {
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault()
         // dispatch() reset erros
-        dispatch(sendFriendRequest({ username }))
+        // dispatch(sendFriendRequest({ username }))
+        stompClient?.publish({
+            destination: "/app/friend/request",
+            body: JSON.stringify({ username })
+        })
         setUsername("")
     }
 
